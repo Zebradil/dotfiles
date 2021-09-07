@@ -1,1 +1,3 @@
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCfKPBlVdFMiTTgrxXNXN7iKSY0NwHw1z/ZLWCPOUk9a6Rmz7WaMi9jucoARPmg+4qUnsl/UV0+K8BgW+51G0+zPeJCtmKUUlOu9X3ZpZGE6Q6F4mi7GL/n/UzVzxSeOU+dYYq/eneZ/vzp3QkBlK6qw3u/k42cP40mza6iZA0LPs/cMLhJFtxksea1Kl8FW0vmNfB4PYneMDBh/OFTGrAyZgJjciNsntR5QalNlzuUZJQ+eaQuGFP2G9l5M9ufJMVLIHYRyDyhQfAAzRcgG2oF8QEiTriZ94i0EA9UG58BQUy+piBUosUvyWcg95u1us+TaTMiyjc+3y1HOhFzkIgveQjqXbGrLl/kkKv5e5WRP9CvLF36WMbyuWLjYDamm1lMQUJWoaQSvsk/S2LJPLiagTUkuU3HlWaRKRtvn2asBlntQhFsClZPq9eh23N+ANdf7Y/bqK5+hJLAJsz+53Fd4bS2DowVaj6t6l0ubzm0xkO+G/87/PYdWyLdr2Lxm6E= zebradil@komputer
+{{ range (gitHubKeys "zebradil") -}}
+{{   .Key }}
+{{ end -}}
