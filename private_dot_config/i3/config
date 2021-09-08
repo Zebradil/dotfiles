@@ -1,0 +1,334 @@
+# i3 config file (v4)
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference
+
+set $mod Mod4
+
+set $left  h
+set $down  j
+set $up    k
+set $right l
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango: DejaVu Sans Condensed, FontAwesome 11
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Keyboard layout
+exec_always "setxkbmap -layout us,us \
+                -variant ,rus \
+                -option \
+                -option 'grp:caps_toggle' \
+                -option 'grp_led:caps' \
+                -option 'misc:typo' \
+                -option 'lv3:ralt_switch' \
+                #-option 'ctrl:swap_lalt_lctl' \
+                -option 'compose:menu' \
+                "
+
+# autostart
+exec --no-startup-id redshift -l geoclue2 -t 6500K:3500K
+exec --no-startup-id udiskie --no-automount --no-notify --tray
+exec --no-startup-id dex -ae i3
+exec_always --no-startup-id xkb-switch --i3
+
+# start a terminal
+bindsym $mod+Return exec alacritty
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start a program launcher
+bindsym $mod+d exec rofi -lines 18 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'DejaVu Sans Condensed 12'
+
+#change volume
+# Pulseaudio
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%    && killall -USR1 i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%    && killall -USR1 i3status
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle && killall -USR1 i3status
+
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# music control
+bindsym XF86AudioNext exec playerctl -p spotify next
+bindsym XF86AudioPrev exec playerctl -p spotify previous
+bindsym XF86AudioPlay exec playerctl -p spotify play-pause
+bindsym XF86AudioStop exec playerctl -p spotify stop
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp   exec light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
+
+# I2C brightness control
+# Requires:
+#
+#   # chmod g+rw /dev/i2c-*
+#
+set $mode_i2c_brightness I2C brightness (-, 1-9, 0)
+mode "$mode_i2c_brightness" {
+    bindsym minus exec --no-startup-id ddcutil setvcp 10 0
+    bindsym 1 exec --no-startup-id ddcutil setvcp 10 10
+    bindsym 2 exec --no-startup-id ddcutil setvcp 10 20
+    bindsym 3 exec --no-startup-id ddcutil setvcp 10 30
+    bindsym 4 exec --no-startup-id ddcutil setvcp 10 40
+    bindsym 5 exec --no-startup-id ddcutil setvcp 10 50
+    bindsym 6 exec --no-startup-id ddcutil setvcp 10 60
+    bindsym 7 exec --no-startup-id ddcutil setvcp 10 70
+    bindsym 8 exec --no-startup-id ddcutil setvcp 10 80
+    bindsym 9 exec --no-startup-id ddcutil setvcp 10 90
+    bindsym 0 exec --no-startup-id ddcutil setvcp 10 100
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+b mode "$mode_i2c_brightness"
+
+
+# change focus
+bindsym $mod+$left  focus left
+bindsym $mod+$down  focus down
+bindsym $mod+$up    focus up
+bindsym $mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+$left  move left
+bindsym $mod+Shift+$down  move down
+bindsym $mod+Shift+$up    move up
+bindsym $mod+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
+
+# move workspace to monitor
+bindsym $mod+Shift+Ctrl+$left  move workspace to output left
+bindsym $mod+Shift+Ctrl+$down  move workspace to output down
+bindsym $mod+Shift+Ctrl+$up    move workspace to output up
+bindsym $mod+Shift+Ctrl+$right move workspace to output right
+
+# split in horizontal orientation
+bindsym $mod+Ctrl+h split h
+
+# split in vertical orientation
+bindsym $mod+Ctrl+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+Ctrl+s sticky toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+q focus parent
+
+# focus the child container
+bindsym $mod+a focus child
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id /home/zebradil/bin/i3exit lock, mode "default"
+    bindsym e exec --no-startup-id /home/zebradil/bin/i3exit logout, mode "default"
+    bindsym s exec --no-startup-id /home/zebradil/bin/i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id /home/zebradil/bin/i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id /home/zebradil/bin/i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id /home/zebradil/bin/i3exit shutdown, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+e mode "$mode_system"
+
+# resize window (you can also use the mouse for that)
+set $mode_resize Resize: use $mod+rmouse, ↑↓←→ or $up $down $left $right
+mode "$mode_resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym $left  resize shrink width 10 px or 10 ppt
+        bindsym $right resize grow width 10 px or 10 ppt
+        bindsym $up    resize shrink height 10 px or 10 ppt
+        bindsym $down  resize grow height 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left  resize shrink width 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Up    resize shrink height 10 px or 10 ppt
+        bindsym Down  resize grow height 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "$mode_resize"
+
+mode "wallpaper" {
+    bindsym d exec variety --trash
+    bindsym n exec variety --next
+    bindsym p exec variety --previous
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+Shift+w mode "default"
+}
+bindsym $mod+Shift+w mode "wallpaper"
+
+mode "player control (space, p, n, h, l)" {
+    bindsym space exec playerctl play-pause
+    bindsym n exec playerctl next
+    bindsym p exec playerctl previous
+
+    bindsym h exec playerctl position 5-
+    bindsym l exec playerctl position 5+
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+Shift+p mode "default"
+}
+bindsym $mod+Shift+p mode "player control (space, p, n, h, l)"
+
+mode "flameshot (gui, screen, full)" {
+    bindsym g exec flameshot gui
+    bindsym s exec flameshot screen
+    bindsym f exec flameshot full
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+Shift+s mode "default"
+}
+bindsym $mod+Shift+s mode "flameshot (gui, screen, full)"
+
+set $setxkbmap "setxkbmap: [l]enovo, [e]rgodox, [k]bp v60"
+mode $setxkbmap {
+    bindsym l exec "setxkbmap -layout us,us \
+                -variant ,rus \
+                -option \
+                -option 'grp:caps_toggle' \
+                -option 'grp_led:caps' \
+                -option 'misc:typo' \
+                -option 'lv3:ralt_switch_multikey' \
+                -option 'ctrl:swap_lalt_lctl' \
+                "
+    bindsym e exec "setxkbmap -layout us,us \
+                -variant ,rus \
+                -option \
+                -option 'grp:caps_toggle' \
+                -option 'grp_led:caps' \
+                -option 'misc:typo' \
+                -option 'lv3:ralt_switch' \
+                -option 'compose:menu' \
+                "
+    bindsym k exec "setxkbmap -layout us,us \
+                -variant ,rus \
+                -option \
+                -option 'grp:caps_toggle' \
+                -option 'grp_led:caps' \
+                -option 'misc:typo' \
+                -option 'ctrl:swap_lalt_lctl' \
+                -option 'lv3:ralt_switch_multikey' \
+                -option 'compose:menu' \
+                "
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+Ctrl+k mode "default"
+}
+bindsym $mod+Ctrl+k mode $setxkbmap
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    colors {
+        background #2f343f
+        statusline #2f343f
+        separator #4b5262
+
+        # colour of border, background, and text
+        focused_workspace       #2f343f #bf616a #d8dee8
+        active_workspace        #2f343f #2f343f #d8dee8
+        inactive_workspace      #2f343f #2f343f #d8dee8
+        urgent_workspace        #2f343f #ebcb8b #2f343f
+    }
+    status_command i3status
+    position top
+}
+
+
+# colour of border, background, text, indicator, and child_border
+client.focused              #bf616a #2f343f #d8dee8 #bf616a #d8dee8
+client.focused_inactive     #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.unfocused            #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.background           #2f343f
+
+default_border pixel 1
+hide_edge_borders both
+for_window [floating] move position center
