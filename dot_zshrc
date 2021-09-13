@@ -377,6 +377,10 @@ fco_preview() {
   git checkout $(awk '{print $2}' <<<"$target" )
 }
 
+update_spacemacs_packages() {
+    emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)"
+}
+
 set_kubeconfig_var() {
     local KUBECONFIG_DIR=~/.kube/config.d
     if [ -d "$KUBECONFIG_DIR" ]; then
