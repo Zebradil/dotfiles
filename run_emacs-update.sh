@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
-git -C ~/.emacs pull
+readonly EMACS_HOME="${HOME}/.emacs.d"
 
-emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)"
+git -C "$EMACS_HOME" pull
+
+emacs --batch -l "${EMACS_HOME}/init.el" --eval="(configuration-layer/update-packages t)"
