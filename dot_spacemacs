@@ -111,7 +111,13 @@ This function should only modify configuration layer settings."
         ;; `dotspacemacs/user-config'. To use a local version of a package, use the
         ;; `:location' property: '(your-package :location "~/path/to/your-package/")
         ;; Also include the dependencies as they will not be resolved automatically.
-        dotspacemacs-additional-packages '(easy-hugo helm-org-rifle editorconfig)
+        dotspacemacs-additional-packages
+        '(
+             easy-hugo
+             editorconfig
+             helm-org-rifle
+             keychain-environment
+             )
 
         ;; A list of packages that cannot be updated.
         dotspacemacs-frozen-packages '()
@@ -567,6 +573,8 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
     (spacemacs|do-after-display-system-init
         (spacemacs/load-spacemacs-env))
+
+    (keychain-refresh-environment)
 
     (setq vc-follow-symlinks t)
 
