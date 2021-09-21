@@ -16,6 +16,8 @@ fi
 yay -S --needed --answerclean N --answerdiff N \
     antibody-bin \
     bat \
+    bpytop \
+    duf \
     exa \
     fd \
     fzf \
