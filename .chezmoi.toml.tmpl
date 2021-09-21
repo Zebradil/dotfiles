@@ -1,3 +1,18 @@
 encryption = "gpg"
 [gpg]
     recipient = "9F2540F5C7A2DD39030476CE3446FAE369C9A8B4"
+
+
+[data]
+
+{{- $battery := get . "battery" -}}
+{{- if not $battery -}}
+{{-   $battery = promptBool "battery" -}}
+{{- end }}
+    battery = {{ $battery }}
+
+{{- $temperature_file := get . "temperature_file" -}}
+{{- if not $temperature_file -}}
+{{-   $temperature_file = promptString "temperature_file" -}}
+{{- end }}
+    temperature_file = {{ $temperature_file | quote }}
