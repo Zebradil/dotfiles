@@ -662,7 +662,8 @@ before packages are loaded."
              ("\\?\\?\\?+" . "#dc752f")))
 
     (setq org-agenda-custom-commands
-        '(("n" "Agenda and all TODOs"
+        '(
+             ("n" "Agenda and all TODOs"
               ((agenda ""
                    ((org-agenda-span 7)
                        (org-agenda-repeating-timestamp-show-all t)))
@@ -673,8 +674,8 @@ before packages are loaded."
                           (org-agenda-repeating-timestamp-show-all t)))
                      (todo ""))
                  ((org-agenda-tag-filter-preset '("+common")))
-                 ("~/org/export/home.html"))
-             ))
+                 ("~/org/export/home.html")))
+        )
 
     (setq org-agenda-export-html-style
         "<style>
