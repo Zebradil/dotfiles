@@ -138,6 +138,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   Plug 'vimwiki/vimwiki'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
+  " Yaml folding
+  Plug 'pedrohdz/vim-yaml-folds'
 call plug#end()
 
 set mouse=a
