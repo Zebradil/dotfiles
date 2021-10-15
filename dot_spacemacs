@@ -619,6 +619,7 @@ before packages are loaded."
         (find-lisp-find-files "~/org" "\.org$"))
     (setq org-startup-indented t)
     (setq org-startup-folded 'content)
+    (setq org-log-done 'note)
 
     (setq org-refile-targets
         '((nil :maxlevel . 9)
