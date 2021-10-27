@@ -66,8 +66,8 @@ bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 #
 #   # chmod g+rw /dev/i2c-*
 #
-set $mode_i2c_brightness I2C brightness (-, 1-9, 0)
-mode "$mode_i2c_brightness" {
+set $mode_i2c_brightness "I2C brightness (-, 1-9, 0)"
+mode $mode_i2c_brightness {
     bindsym minus exec --no-startup-id ddcutil setvcp 10 0
     bindsym 1 exec --no-startup-id ddcutil setvcp 10 10
     bindsym 2 exec --no-startup-id ddcutil setvcp 10 20
@@ -84,7 +84,7 @@ mode "$mode_i2c_brightness" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Shift+b mode "$mode_i2c_brightness"
+bindsym $mod+Shift+b mode $mode_i2c_brightness
 
 
 # change focus
@@ -187,8 +187,8 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
-mode "$mode_system" {
+set $mode_system "System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown"
+mode $mode_system {
     bindsym l exec --no-startup-id /home/zebradil/bin/i3exit lock, mode "default"
     bindsym e exec --no-startup-id /home/zebradil/bin/i3exit logout, mode "default"
     bindsym s exec --no-startup-id /home/zebradil/bin/i3exit suspend, mode "default"
@@ -200,11 +200,11 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Shift+e mode "$mode_system"
+bindsym $mod+Shift+e mode $mode_system
 
 # resize window (you can also use the mouse for that)
-set $mode_resize Resize: use $mod+rmouse, ↑↓←→ or $up $down $left $right
-mode "$mode_resize" {
+set $mode_resize "Resize: use $mod+rmouse, ↑↓←→ or $up $down $left $right"
+mode $mode_resize {
         # These bindings trigger as soon as you enter the resize mode
 
         # Pressing left will shrink the window’s width.
@@ -227,9 +227,23 @@ mode "$mode_resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
-bindsym $mod+r mode "$mode_resize"
+bindsym $mod+r mode $mode_resize
 
-mode "wallpaper" {
+set $mode_displays "displays: 1, 2, 1+2, 1=2"
+mode $mode_displays {
+    bindsym 1 exec ~/.screenlayout/first.sh
+    bindsym 2 exec ~/.screenlayout/second.sh
+    bindsym + exec ~/.screenlayout/extended.sh
+    bindsym = exec ~/.screenlayout/mirror.sh
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+Shift+w mode "default"
+}
+bindsym $mod+Shift+d mode $mode_displays
+
+set $mode_wallpaper "wallpaper: d[elete], n[ext], p[revious]"
+mode $mode_wallpaper {
     bindsym d exec variety --trash
     bindsym n exec variety --next
     bindsym p exec variety --previous
@@ -238,9 +252,10 @@ mode "wallpaper" {
     bindsym Escape mode "default"
     bindsym $mod+Shift+w mode "default"
 }
-bindsym $mod+Shift+w mode "wallpaper"
+bindsym $mod+Shift+w mode $mode_wallpaper
 
-mode "player control (space, p, n, h, l)" {
+set $mode_player "player control: space, p[revious], n[ext], h, l"
+mode $mode_player {
     bindsym space exec playerctl play-pause
     bindsym n exec playerctl next
     bindsym p exec playerctl previous
@@ -252,9 +267,10 @@ mode "player control (space, p, n, h, l)" {
     bindsym Escape mode "default"
     bindsym $mod+Shift+p mode "default"
 }
-bindsym $mod+Shift+p mode "player control (space, p, n, h, l)"
+bindsym $mod+Shift+p mode $mode_player
 
-mode "flameshot (gui, screen, full)" {
+set $mode_flameshot "flameshot (gui, screen, full)"
+mode $mode_flameshot {
     bindsym g exec flameshot gui
     bindsym s exec flameshot screen
     bindsym f exec flameshot full
@@ -263,7 +279,7 @@ mode "flameshot (gui, screen, full)" {
     bindsym Escape mode "default"
     bindsym $mod+Shift+s mode "default"
 }
-bindsym $mod+Shift+s mode "flameshot (gui, screen, full)"
+bindsym $mod+Shift+s mode $mode_flameshot
 
 set $setxkbmap "setxkbmap: [l]enovo, [e]rgodox, [k]bp v60"
 mode $setxkbmap {
