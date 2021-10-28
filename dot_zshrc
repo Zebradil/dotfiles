@@ -383,10 +383,7 @@ update_spacemacs_packages() {
 }
 
 set_kubeconfig_var() {
-    local KUBECONFIG_DIRS=~/.kube/*clusters
-    if [[ -n "$KUBECONFIG_DIRS"(#qN) ]]; then
-        export KUBECONFIG=$(fd '\.ya?ml$' "$KUBECONFIG_DIRS" | xargs | tr ' ' ':')
-    fi
+    export KUBECONFIG=$(echo ~/.kube/*clusters/*.y?ml(N) | tr ' ' ':')
 }
 
 set_kubeconfig_var
