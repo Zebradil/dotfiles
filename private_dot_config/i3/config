@@ -229,12 +229,12 @@ mode $mode_resize {
 }
 bindsym $mod+r mode $mode_resize
 
-set $mode_displays "displays: 1, 2, 1+2, 1=2"
+set $mode_displays "displays: 1, 2, e[xtended], m[irror]"
 mode $mode_displays {
     bindsym 1 exec ~/.screenlayout/first.sh
     bindsym 2 exec ~/.screenlayout/second.sh
-    bindsym + exec ~/.screenlayout/extended.sh
-    bindsym = exec ~/.screenlayout/mirror.sh
+    bindsym e exec ~/.screenlayout/extended.sh
+    bindsym m exec ~/.screenlayout/mirror.sh
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
