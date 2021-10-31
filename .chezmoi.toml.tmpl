@@ -1,4 +1,4 @@
-# vim: set ft=gotextmpl :
+{{/* vim: set ft=gotextmpl : */}}
 encryption = "gpg"
 [gpg]
     recipient = "9F2540F5C7A2DD39030476CE3446FAE369C9A8B4"
@@ -10,7 +10,7 @@ encryption = "gpg"
 
 {{- $battery := get . "battery" -}}
 {{- if not $battery -}}
-{{-   $battery = promptBool "battery" -}}
+{{-   $battery = promptBool "battery [yes/no]" -}}
 {{- end }}
     battery = {{ $battery }}
 
