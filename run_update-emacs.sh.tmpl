@@ -1,0 +1,14 @@
+#!/bin/bash
+# vim: set ft=bash :
+
+set -euo pipefail
+
+git -C "${HOME}/.emacs.d" pull
+
+"{{.emacs_spacemacs_dir}}/bin/doom" update
+
+readonly SPACEMACS_DIR="{{.emacs_spacemacs_dir}}"
+git -C "$SPACEMACS_DIR" pull
+emacs --batch -l "${SPACEMACS_DIR}/init.el" --eval="(configuration-layer/update-packages t)"
+
+systemctl restart --no-block --user emacs
