@@ -1,7 +1,10 @@
+# vim: set ft=gotextmpl :
 encryption = "gpg"
 [gpg]
     recipient = "9F2540F5C7A2DD39030476CE3446FAE369C9A8B4"
 
+[git]
+    autoCommit = true
 
 [data]
 
@@ -16,3 +19,19 @@ encryption = "gpg"
 {{-   $temperature_file = promptString "temperature_file" -}}
 {{- end }}
     temperature_file = {{ $temperature_file | quote }}
+
+{{- $emacs_doom_dir := get . "emacs_doom_dir" -}}
+{{- if not $emacs_doom_dir -}}
+{{-   $emacs_doom_dir_default := "~/.emacs_doom" -}}
+{{-   $emacs_doom_dir = printf "Doom-Emacs installation directory [%s]" $emacs_doom_dir_default | promptString -}}
+{{-   $emacs_doom_dir = default $emacs_doom_dir_default $emacs_doom_dir }}
+{{- end }}
+    emacs_doom_dir = {{ $emacs_doom_dir | quote }}
+
+{{- $emacs_spacemacs_dir := get . "emacs_spacemacs_dir" -}}
+{{- if not $emacs_spacemacs_dir -}}
+{{-   $emacs_spacemacs_dir_default := "~/.emacs_spacemacs" -}}
+{{-   $emacs_spacemacs_dir = printf "Spacemacs installation directory [%s]" $emacs_spacemacs_dir_default | promptString -}}
+{{-   $emacs_spacemacs_dir = default $emacs_spacemacs_dir_default $emacs_spacemacs_dir }}
+{{- end }}
+    emacs_spacemacs_dir = {{ $emacs_spacemacs_dir | quote }}

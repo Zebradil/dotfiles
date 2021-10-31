@@ -1,9 +1,10 @@
 #!/bin/bash
+# vim: set ft=bash :
 
 set -euo pipefail
 
-readonly DOOM_DIR=~/.emacs_doom
-readonly SPACEMACS_DIR=~/.emacs_spacemacs
+readonly DOOM_DIR="{{.emacs_doom_dir}}"
+readonly SPACEMACS_DIR="{{.emacs_spacemacs_dir}}"
 
 if [[ ! -d "${DOOM_DIR}" ]]
 then
