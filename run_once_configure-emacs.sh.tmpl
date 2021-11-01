@@ -24,7 +24,7 @@ then
     git clone https://github.com/syl20bnr/spacemacs "${SPACEMACS_DIR}"
 fi
 
-if [[ "$( git -C ~/.emacs.d remote get-url origin)" != "${CHEMACS2_URL}" ]]
+if [[ "$( set +e; git -C ~/.emacs.d remote get-url origin 2>/dev/null; set -e)" != "${CHEMACS2_URL}" ]]
 then
     header "Installing Chemacs2"
     rm -f ~/.emacs
