@@ -9,7 +9,7 @@ encryption = "gpg"
 [data]
 
 {{- $battery := get . "battery" -}}
-{{- if not $battery -}}
+{{- if and (not $battery) (not (hasKey . "battery")) -}}
 {{-   $battery = promptBool "battery [yes/no]" -}}
 {{- end }}
     battery = {{ $battery }}
