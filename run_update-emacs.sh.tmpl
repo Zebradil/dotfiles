@@ -19,7 +19,12 @@ header "Updating Spacemacs"
 
 readonly SPACEMACS_DIR="{{.emacs_spacemacs_dir}}"
 git -C "$SPACEMACS_DIR" pull
-emacs --batch -l "${SPACEMACS_DIR}/init.el" --eval="(configuration-layer/update-packages t)"
+
+emacs \
+    -l "${HOME}/.emacs.d/init.el" \
+    --with-profile spacemacs \
+    --batch \
+    --eval="(configuration-layer/update-packages t)"
 
 header "Restarting emacs.service"
 
