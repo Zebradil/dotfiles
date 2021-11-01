@@ -432,7 +432,7 @@ let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_frontmatter = 1
 
 " Integrate with chezmoi
-autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path %
+"autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path %
 
 " FZF ---------------------------
 
