@@ -3,12 +3,20 @@
 
 set -euo pipefail
 
+
 header(){
     printf " :$1: " | xargs -d: -n1 printf '\033[1;30;42m %-40s \033[0m\n'
 }
 
-readonly DOOM_DIR="{{.emacs_doom_dir}}"
-readonly SPACEMACS_DIR="{{.emacs_spacemacs_dir}}"
+
+DOOM_DIR="{{.emacs_doom_dir}}"
+DOOM_DIR="${DOOM_DIR/#\~/$HOME}"
+readonly DOOM_DIR
+
+SPACEMACS_DIR="{{.emacs_spacemacs_dir}}"
+SPACEMACS_DIR="${SPACEMACS_DIR/#\~/$HOME}"
+readonly SPACEMACS_DIR
+
 readonly CHEMACS2_URL="https://github.com/plexus/chemacs2.git"
 
 if [[ ! -d "${DOOM_DIR}" ]]
