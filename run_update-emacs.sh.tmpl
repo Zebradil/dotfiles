@@ -17,7 +17,9 @@ header "Updating Emacs Doom"
 
 header "Updating Spacemacs"
 
-readonly SPACEMACS_DIR="{{.emacs_spacemacs_dir}}"
+SPACEMACS_DIR="{{.emacs_spacemacs_dir}}"
+SPACEMACS_DIR="${SPACEMACS_DIR/#\~/$HOME}"
+readonly SPACEMACS_DIR
 git -C "$SPACEMACS_DIR" pull
 
 emacs \
