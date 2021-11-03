@@ -16,7 +16,7 @@ export FZF_DEFAULT_COMMAND='fd --no-ignore --hidden --exclude ".git" --exclude "
 export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 # TODO transform these commands to functions
 FZF_PREVIEW_MAX_LINES=200
-FZF_DIRECTORY_PREVIEW_CMD="exa -l --group-directories-first -T --color=always --color-scale {} | head -${FZF_PREVIEW_MAX_LINES}"
+FZF_DIRECTORY_PREVIEW_CMD="exa -l --group-directories-first -T -L5 --color=always --color-scale {} | head -${FZF_PREVIEW_MAX_LINES}"
 FZF_TEXT_FILE_PREVIEW_CMD="bat -pp --italic-text=always --color=always -r:${FZF_PREVIEW_MAX_LINES}"
 export FZF_ALT_C_OPTS="--preview '${FZF_DIRECTORY_PREVIEW_CMD}'"
 
@@ -422,7 +422,9 @@ export GPG_TTY
 # | Command line hooks      |
 # +-------------------------+
 
-if [ $commands[zoxide] ]; then eval "$(zoxide init zsh)"
+if [ $commands[zoxide] ]; then
+    eval "$(zoxide init zsh)"
+    _ZO_FZF_OPTS='+s --preview "exa -l --group-directories-first -T -L5 --color=always --color-scale {2..} | head -200"'
 elif [ $commands[fasd] ]; then eval "$(fasd --init auto)"
 # Z and custom FZF wrapper around it
 elif [[ -r "/usr/share/z/z.sh" ]]; then
