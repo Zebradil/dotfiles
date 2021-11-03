@@ -1,3 +1,4 @@
+jeffreytse/zsh-vi-mode
 unixorn/git-extra-commands
 robbyrussell/oh-my-zsh path:lib/git.zsh
 robbyrussell/oh-my-zsh path:plugins/git
