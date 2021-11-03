@@ -13,7 +13,10 @@ git -C "${HOME}/.emacs.d" pull
 
 header "Updating Emacs Doom"
 
-"{{.emacs_doom_dir}}/bin/doom" --yes upgrade
+DOOM_DIR="{{.emacs_doom_dir}}"
+DOOM_DIR="${DOOM_DIR/#\~/$HOME}"
+readonly DOOM_DIR
+"${DOOM_DIR}/bin/doom" --yes upgrade
 
 header "Updating Spacemacs"
 
