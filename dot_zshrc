@@ -1,3 +1,4 @@
+# vim: set ft=zsh :
 # +=========================+
 # | Nix package manager     |
 # +-------------------------+
@@ -424,7 +425,7 @@ export GPG_TTY
 
 if [ $commands[zoxide] ]; then
     eval "$(zoxide init zsh)"
-    _ZO_FZF_OPTS='+s --preview "exa -l --group-directories-first -T -L5 --color=always --color-scale {2..} | head -200"'
+    export _ZO_FZF_OPTS='+s --preview "exa -l --group-directories-first -T -L5 --color=always --color-scale {2..} | head -200"'
 elif [ $commands[fasd] ]; then eval "$(fasd --init auto)"
 # Z and custom FZF wrapper around it
 elif [[ -r "/usr/share/z/z.sh" ]]; then
