@@ -11,6 +11,8 @@ endif
 " }}}
 
 call plug#begin('~/.local/share/nvim/plugged')
+  Plug 'github/copilot'
+
   " Some defaults from experienced users
   Plug 'tpope/vim-sensible'
 
