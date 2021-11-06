@@ -123,11 +123,34 @@ export MANPAGER='nvim +Man!'
 # | Antibody plugin manager |
 # +-------------------------+
 
-if [ ! -f ~/.zsh_plugins.sh -a -f ~/.zsh_plugins.txt ];
+readonly ANTIBODY_PLUGINS_FILE="${HOME}/.zsh_plugins.sh"
+
+if [ ! -f "${ANTIBODY_PLUGINS_FILE}" -a $commands[antibody] ]
 then
-    antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
+    readonly ANTIBODY_PLUGINS=$(<<EOF
+jeffreytse/zsh-vi-mode
+unixorn/git-extra-commands
+robbyrussell/oh-my-zsh path:lib/git.zsh
+robbyrussell/oh-my-zsh path:plugins/git
+zdharma-continuum/history-search-multi-word
+hcgraf/zsh-sudo
+robbyrussell/oh-my-zsh path:plugins/docker-machine
+zsh-users/zsh-history-substring-search
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting
+denysdovhan/spaceship-prompt
+zchee/zsh-completions
+EOF
+    )
+    antibody bundle <<< "${ANTIBODY_PLUGINS}" > "${ANTIBODY_PLUGINS_FILE}"
 fi
-[ -f ~/.zsh_plugins.sh ] && source ~/.zsh_plugins.sh
+
+if [ -f "${ANTIBODY_PLUGINS_FILE}" ]
+then
+    ZVM_INIT_MODE=sourcing
+
+    source "${ANTIBODY_PLUGINS_FILE}"
+fi
 
 
 # +=========================+
