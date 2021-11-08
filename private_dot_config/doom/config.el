@@ -23,16 +23,12 @@
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (setq doom-font (font-spec :family "Iosevka Term" :size 16 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "Iosevka Term") ; inherits `doom-font''s :size
-    )
+      )
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-tomorrow-night)
-
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -55,3 +51,113 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(setq deft-directory "~/notes")
+
+(setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
+
+(setq org-log-done 'note)
+(setq org-todo-keywords
+      '((sequence "MAYBE" "TODO" "NEXT" "DOING" "|" "DONE" "CANCELLED")))
+
+                                        ; https://en.wikipedia.org/wiki/X11_color_names
+(setq org-todo-keyword-faces
+      '(("MAYBE" :foreground "dark khaki")
+        ("TODO" :foreground "gold")
+        ("NEXT" :foreground "tomato")
+        ("DOING" :foreground "red")
+        ("EVENT" :background "gray25" :foreground "white")
+        ("PROJ" :background "firebrick" :foreground "white")
+        ("CANCELLED" :foreground "dark gray")
+        ("DONE" :foreground "dark sea green")))
+(setq hl-todo-keyword-faces
+      '(("MAYBE" . "dark khaki")
+        ("TODO" . "gold")
+        ("NEXT" . "tomato")
+        ("DOING" . "red")
+        ("THEM" . "#2aa198")
+        ("PROG" . "#268bd2")
+        ("OKAY" . "#268bd2")
+        ("DONT" . "#d70000")
+        ("FAIL" . "#d70000")
+        ("DONE" . "dark sea green")
+        ("CANCELLED" :foreground "dark gray")
+        ("EVENT" :background "gray25" :foreground "white")
+        ("PROJ" :background "firebrick" :foreground "white")
+        ("NOTE" . "#875f00")
+        ("KLUDGE" . "#875f00")
+        ("HACK" . "#875f00")
+        ("TEMP" . "#875f00")
+        ("FIXME" . "#dc752f")
+        ("XXX+" . "#dc752f")
+        ("\\?\\?\\?+" . "#dc752f")))
+
+(setq org-agenda-custom-commands
+      '(
+        ("n" "Agenda and all TODOs"
+         ((agenda ""
+                  ((org-agenda-span 7)
+                   (org-agenda-repeating-timestamp-show-all t)))
+          (todo "")))
+        ("h" "Agenda and Home-related tasks"
+         ((agenda ""
+                  ((org-agenda-span 7)
+                   (org-agenda-repeating-timestamp-show-all t)))
+          (todo ""))
+         ((org-agenda-tag-filter-preset '("+common")))
+         ("~/org/export/home.html")))
+      )
+
+(setq org-agenda-export-html-style
+      "<style>
+      body {
+        color: #eaeaea;
+        background-color: #000000;
+        font-size: 2em;
+      }
+      .custom {
+        /* (:foreground gold) */
+        color: #ffd700;
+      }
+      .org-agenda-date {
+        /* org-agenda-date */
+        color: #7aa6da;
+      }
+      .org-agenda-date-today {
+        /* org-agenda-date-today */
+        color: #7aa6da;
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-agenda-date-weekend {
+        /* org-agenda-date-weekend */
+        color: #7aa6da;
+        font-weight: bold;
+      }
+      .org-agenda-structure {
+        /* org-agenda-structure */
+        color: #c397d8;
+      }
+      .org-scheduled-today {
+        /* org-scheduled-today */
+        color: #b9ca4a;
+      }
+      .org-tag {
+        /* org-tag */
+        font-weight: bold;
+      }
+      .warning {
+        /* warning */
+        color: #e78c45;
+      }
+
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+        </style>")
