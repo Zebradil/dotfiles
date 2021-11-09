@@ -21,8 +21,8 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(setq doom-font (font-spec :family "Iosevka Term" :size 16 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "Iosevka Term") ; inherits `doom-font''s :size
+(setq doom-font (font-spec :family "Iosevka" :size 18)
+      doom-variable-pitch-font (font-spec :family "Iosevka") ; inherits `doom-font''s :size
       )
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -52,13 +52,21 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+
+
 (setq deft-directory "~/notes")
 
-(setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
-
-(setq org-log-done 'note)
-
-(setq org-agenda-custom-commands
+;;; :lang org
+(setq org-directory "~/org/"
+      org-archive-location (concat org-directory ".archive/%s::")
+      org-roam-directory (concat org-directory "notes/")
+      org-roam-db-location (concat org-roam-directory ".org-roam.db")
+      org-journal-encrypt-journal t
+      org-journal-file-format "%Y%m%d.org"
+      org-ellipsis " [...] "
+      org-log-done 'note
+      org-agenda-files (directory-files-recursively org-directory "\\.org$")
+      org-agenda-custom-commands
       '(
         ("n" "Agenda and all TODOs"
          ((agenda ""
