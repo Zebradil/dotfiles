@@ -57,40 +57,6 @@
 (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
 
 (setq org-log-done 'note)
-(setq org-todo-keywords
-      '((sequence "MAYBE" "TODO" "NEXT" "DOING" "|" "DONE" "CANCELLED")))
-
-                                        ; https://en.wikipedia.org/wiki/X11_color_names
-(setq org-todo-keyword-faces
-      '(("MAYBE" :foreground "dark khaki")
-        ("TODO" :foreground "gold")
-        ("NEXT" :foreground "tomato")
-        ("DOING" :foreground "red")
-        ("EVENT" :background "gray25" :foreground "white")
-        ("PROJ" :background "firebrick" :foreground "white")
-        ("CANCELLED" :foreground "dark gray")
-        ("DONE" :foreground "dark sea green")))
-(setq hl-todo-keyword-faces
-      '(("MAYBE" . "dark khaki")
-        ("TODO" . "gold")
-        ("NEXT" . "tomato")
-        ("DOING" . "red")
-        ("THEM" . "#2aa198")
-        ("PROG" . "#268bd2")
-        ("OKAY" . "#268bd2")
-        ("DONT" . "#d70000")
-        ("FAIL" . "#d70000")
-        ("DONE" . "dark sea green")
-        ("CANCELLED" :foreground "dark gray")
-        ("EVENT" :background "gray25" :foreground "white")
-        ("PROJ" :background "firebrick" :foreground "white")
-        ("NOTE" . "#875f00")
-        ("KLUDGE" . "#875f00")
-        ("HACK" . "#875f00")
-        ("TEMP" . "#875f00")
-        ("FIXME" . "#dc752f")
-        ("XXX+" . "#dc752f")
-        ("\\?\\?\\?+" . "#dc752f")))
 
 (setq org-agenda-custom-commands
       '(
