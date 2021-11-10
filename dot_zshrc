@@ -435,7 +435,7 @@ if [[ -f ~/.config/tabtab/__tabtab.zsh ]]; then source ~/.config/tabtab/__tabtab
 
 if [ $commands[gnome-keyring-daemon] ];
 then
-    eval $(gnome-keyring-daemon -s --components=gpg,pkcs11,secrets,ssh)
+    eval $(gnome-keyring-daemon --start)
     export GNOME_KEYRING_CONTROL
     export SSH_AUTH_SOCK
 fi
