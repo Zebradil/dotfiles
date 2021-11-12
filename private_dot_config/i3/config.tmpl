@@ -17,16 +17,47 @@ font pango: DejaVu Sans Condensed, FontAwesome 11
 floating_modifier $mod
 
 # Keyboard layout
-exec_always "setxkbmap -layout us,us \
-                -variant ,rus \
-                -option \
-                -option 'grp:caps_toggle' \
-                -option 'grp_led:caps' \
-                -option 'misc:typo' \
-                -option 'lv3:ralt_switch' \
-                #-option 'ctrl:swap_lalt_lctl' \
-                -option 'compose:menu' \
-                "
+{{ define "lenovo" -}}
+"setxkbmap -layout us,us \
+           -variant ,rus \
+           -option \
+           -option 'grp:caps_toggle' \
+           -option 'grp_led:caps' \
+           -option 'misc:typo' \
+           -option 'lv3:ralt_switch_multikey' \
+           -option 'ctrl:swap_lalt_lctl'"
+{{ end -}}
+
+{{- define "ergodox" -}}
+"setxkbmap -layout us,us \
+           -variant ,rus \
+           -option \
+           -option 'grp:caps_toggle' \
+           -option 'grp_led:caps' \
+           -option 'misc:typo' \
+           -option 'lv3:ralt_switch' \
+           -option 'compose:menu'"
+{{ end -}}
+
+{{- define "kbp v60" -}}
+"setxkbmap -layout us,us \
+           -variant ,rus \
+           -option \
+           -option 'grp:caps_toggle' \
+           -option 'grp_led:caps' \
+           -option 'misc:typo' \
+           -option 'ctrl:swap_lalt_lctl' \
+           -option 'lv3:ralt_switch_multikey' \
+           -option 'compose:menu'"
+{{ end -}}
+
+{{ if (eq .keyboard_layout "l") }}
+exec_always {{ template "lenovo" }}
+{{ else if (eq .keyboard_layout "k") }}
+exec_always {{ template "kbp v60" }}
+{{ else }}
+exec_always {{ template "ergodox" }}
+{{ end }}
 
 # autostart
 # exec --no-startup-id redshift -l geoclue2 -t 6500K:3500K
@@ -283,34 +314,9 @@ bindsym $mod+Shift+s mode $mode_flameshot
 
 set $setxkbmap "setxkbmap: [l]enovo, [e]rgodox, [k]bp v60"
 mode $setxkbmap {
-    bindsym l exec "setxkbmap -layout us,us \
-                -variant ,rus \
-                -option \
-                -option 'grp:caps_toggle' \
-                -option 'grp_led:caps' \
-                -option 'misc:typo' \
-                -option 'lv3:ralt_switch_multikey' \
-                -option 'ctrl:swap_lalt_lctl' \
-                "
-    bindsym e exec "setxkbmap -layout us,us \
-                -variant ,rus \
-                -option \
-                -option 'grp:caps_toggle' \
-                -option 'grp_led:caps' \
-                -option 'misc:typo' \
-                -option 'lv3:ralt_switch' \
-                -option 'compose:menu' \
-                "
-    bindsym k exec "setxkbmap -layout us,us \
-                -variant ,rus \
-                -option \
-                -option 'grp:caps_toggle' \
-                -option 'grp_led:caps' \
-                -option 'misc:typo' \
-                -option 'ctrl:swap_lalt_lctl' \
-                -option 'lv3:ralt_switch_multikey' \
-                -option 'compose:menu' \
-                "
+    bindsym l exec {{ template "lenovo" }}
+    bindsym e exec {{ template "ergodox" }}
+    bindsym k exec {{ template "kbp v60" }}
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
