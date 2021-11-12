@@ -43,8 +43,8 @@ disk "/home" {
 }
 
 ethernet _first_ {
-    format_up = "<span background='#88c0d0'>  %ip (%speed) </span>"
-    format_down = "<span background='#88c0d0'>  Disconnected </span>"
+    format_up = "<span background='#88c0d0'>  %ip (%speed) </span>"
+    format_down = "<span background='#88c0d0'>  Disconnected </span>"
 }
 
 wireless _first_ {
@@ -73,6 +73,5 @@ battery all {
 }
 
 tztime local {
-		format = "<span background='#81a1c1'> %time </span>"
-		format_time = " %a %-d %b %H:%M"
+    format = "<span background='#81a1c1'>  %a %-d %b %H:%M </span>"
 }
