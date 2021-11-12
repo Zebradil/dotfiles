@@ -35,3 +35,9 @@ encryption = "gpg"
 {{-   $emacs_spacemacs_dir = default $emacs_spacemacs_dir_default $emacs_spacemacs_dir }}
 {{- end }}
     emacs_spacemacs_dir = {{ $emacs_spacemacs_dir | quote }}
+
+{{- $keyboard_layout := get . "keyboard_layout" -}}
+{{- if not $keyboard_layout -}}
+{{-   $keyboard_layout = promptString "keyboard_layout ([l]enovo, [e]rgodox, [k]bp v60)" -}}
+{{- end }}
+    keyboard_layout = {{ $keyboard_layout | quote }}
