@@ -181,7 +181,8 @@ alias kga="kubectl get -A"
 alias kc="kubectx"
 alias kn="kubens"
 
-alias ec="emacsclient -nc"
+ec() { emacs "$@" </dev/null &>/dev/null &; disown }
+alias ecc="emacsclient -nc"
 
 function mcd() {
     if [ -d $1 ]; then
