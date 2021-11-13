@@ -23,7 +23,7 @@ encryption = "gpg"
 {{- $emacs_doom_dir := get . "emacs_doom_dir" -}}
 {{- if not $emacs_doom_dir -}}
 {{-   $emacs_doom_dir_default := "~/.emacs_doom" -}}
-{{-   $emacs_doom_dir = printf "Doom-Emacs installation directory [%s]" $emacs_doom_dir_default | promptString -}}
+{{-   $emacs_doom_dir = printf "Doom-Emacs installation directory [%s], answer \"no\" to disable completely" $emacs_doom_dir_default | promptString -}}
 {{-   $emacs_doom_dir = default $emacs_doom_dir_default $emacs_doom_dir }}
 {{- end }}
     emacs_doom_dir = {{ $emacs_doom_dir | quote }}
@@ -31,7 +31,7 @@ encryption = "gpg"
 {{- $emacs_spacemacs_dir := get . "emacs_spacemacs_dir" -}}
 {{- if not $emacs_spacemacs_dir -}}
 {{-   $emacs_spacemacs_dir_default := "~/.emacs_spacemacs" -}}
-{{-   $emacs_spacemacs_dir = printf "Spacemacs installation directory [%s]" $emacs_spacemacs_dir_default | promptString -}}
+{{-   $emacs_spacemacs_dir = printf "Spacemacs installation directory [%s], answer \"no\" to disable completely" $emacs_spacemacs_dir_default | promptString -}}
 {{-   $emacs_spacemacs_dir = default $emacs_spacemacs_dir_default $emacs_spacemacs_dir }}
 {{- end }}
     emacs_spacemacs_dir = {{ $emacs_spacemacs_dir | quote }}
