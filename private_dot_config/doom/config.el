@@ -56,6 +56,10 @@
 
 (setq deft-directory "~/notes")
 
+(use-package! org-super-agenda
+  :hook (org-agenda-mode . org-super-agenda-mode)
+  )
+
 ;;; :lang org
 (setq org-directory "~/org/"
       org-archive-location (concat org-directory ".archive/%s::")
@@ -77,10 +81,11 @@
          ((agenda ""
                   ((org-agenda-span 7)
                    (org-agenda-repeating-timestamp-show-all t)))
-          (todo ""))
+          (todo "" ((org-agenda-overriding-header "Projects")
+                    (org-super-agenda-groups
+                     '((:auto-parent t))))))
          ((org-agenda-tag-filter-preset '("+common")))
-         ("~/org/export/home.html")))
-      )
+         ("~/org/export/home.html"))))
 
 (setq org-agenda-export-html-style
       "<style>
