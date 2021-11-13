@@ -122,6 +122,19 @@
         /* org-tag */
         font-weight: bold;
       }
+      .org-todo {
+        /* org-todo */
+        font-weight: bold;
+      }
+      .org-todo-idea { color: hsl(120,100%,20%); }
+      .org-todo-todo { color: hsl(120,100%,60%); }
+      .org-todo-strt { color: hsl( 60,100%,60%); }
+      .org-todo-wait { color: hsl(240, 50%,50%); }
+      .org-todo-hold { color: hsl(180, 50%,50%); }
+      .org-todo-done { color: hsl(120, 50%,50%); }
+      .org-todo-kill { color: hsl(  0, 50%,50%); }
+      .org-todo-proj { color: hsl(240, 30%,30%); }
+      .org-todo-loop { color: hsl(180, 30%,30%); }
       .warning {
         /* warning */
         color: #e78c45;
@@ -136,4 +149,14 @@
       a:hover {
         text-decoration: underline;
       }
-        </style>")
+      </style>
+      <script>
+      document.addEventListener('DOMContentLoaded', function(event) {
+          for (const todoItem of document.getElementsByClassName('org-todo')) {
+              const allowed = ['IDEA', 'TODO', 'STRT', 'WAIT', 'HOLD', 'DONE', 'KILL', 'PROJ', 'LOOP'];
+              if (allowed.includes(todoItem.innerText)) {
+                  todoItem.classList.add('org-todo-' + todoItem.innerText.trim().toLowerCase());
+              }
+          }
+      });
+      </script>")
