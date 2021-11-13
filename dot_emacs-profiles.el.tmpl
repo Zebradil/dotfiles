@@ -1,19 +1,20 @@
 {{/* vim: set ft=gotexttmpl : */}}
 
 {{- define "default_emacs" -}}
-{{- if (ne .emacs_doom_dir "no" -}}
+{{- if (ne .emacs_doom_dir "no") -}}
 {{ .emacs_doom_dir }}
 {{- else -}}
 {{ .emacs_spacemacs_dir }}
 {{- end }}
+{{- end }}
 
-{{ if (or (ne .emacs_doom_dir "no") (ne .emacs_spacemacs.dir "no")) }}
+{{- if (or (ne .emacs_doom_dir "no") (ne .emacs_spacemacs_dir "no")) }}
 (
- ("default" . ((user-emacs-directory . "{{ template "default_emacs" }}")))
-{{ if (ne .emacs_doom_dir "no" -}}
+ ("default" . ((user-emacs-directory . "{{ template "default_emacs" . }}")))
+{{- if (ne .emacs_doom_dir "no") }}
  ("doom" . ((user-emacs-directory . "{{ .emacs_doom_dir }}")))
 {{- end }}
-{{ if (ne .emacs_spacemacs_dir "no" -}}
+{{- if (ne .emacs_spacemacs_dir "no") }}
  ("spacemacs" . ((user-emacs-directory . "{{ .emacs_spacemacs_dir }}")))
 {{- end }}
 )
