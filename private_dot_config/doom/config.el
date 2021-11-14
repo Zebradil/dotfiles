@@ -98,7 +98,8 @@
 ;; TODO insert HTML_HEAD_EXTRA on org-agenda-before-write-hook
 
 (setq org-agenda-export-html-style
-      "<style>
+      "<meta charset=\"UTF-8\">
+      <style>
       body {
         color: #eaeaea;
         background-color: #000000;
