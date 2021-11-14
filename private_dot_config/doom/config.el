@@ -135,6 +135,7 @@
       .org-tag {
         /* org-tag */
         font-weight: bold;
+        color: hsl(0, 0%, 20%);
       }
       .org-todo {
         /* org-todo */
