@@ -68,6 +68,17 @@
       org-ellipsis " [...] "
       org-log-done 'note
       org-agenda-files (directory-files-recursively org-directory "\\.org$")
+      org-todo-keyword-faces
+      '(; Copied from css and processed with :'<,'>s/\v\.org-todo-(\w+)[^#]+(#\w+).*/("\U\1\E" :foreground "\2")
+        ("IDEA" :foreground "#003300")
+        ("TODO" :foreground "#009900")
+        ("STRT" :foreground "#999900")
+        ("WAIT" :foreground "#3f3f7f")
+        ("HOLD" :foreground "#3f7f7f")
+        ("DONE" :foreground "#3f7f3f")
+        ("KILL" :foreground "#7f3f3f")
+        ("PROJ" :foreground "#35354c")
+        ("LOOP" :foreground "#354c4c"))
       org-agenda-custom-commands
       '(
         ("n" "Agenda and all TODOs"
@@ -80,9 +91,11 @@
                   ((org-agenda-span 7)
                    (org-agenda-repeating-timestamp-show-all t)))
           (tags-todo "common" ((org-super-agenda-groups
-                     '((:auto-parent t))))))
+                                '((:auto-parent t))))))
          ((org-agenda-tag-filter-preset '("+common")))
          ("~/org/export/home.html"))))
+
+;; TODO insert HTML_HEAD_EXTRA on org-agenda-before-write-hook
 
 (setq org-agenda-export-html-style
       "<style>
@@ -126,15 +139,15 @@
         /* org-todo */
         font-weight: bold;
       }
-      .org-todo-idea { color: hsl(120,100%,20%); }
-      .org-todo-todo { color: hsl(120,100%,60%); }
-      .org-todo-strt { color: hsl( 60,100%,60%); }
-      .org-todo-wait { color: hsl(240, 50%,50%); }
-      .org-todo-hold { color: hsl(180, 50%,50%); }
-      .org-todo-done { color: hsl(120, 50%,50%); }
-      .org-todo-kill { color: hsl(  0, 50%,50%); }
-      .org-todo-proj { color: hsl(240, 30%,30%); }
-      .org-todo-loop { color: hsl(180, 30%,30%); }
+      .org-todo-idea { color: hsl(120,100%,20%); } /* #003300 */
+      .org-todo-todo { color: hsl(120,100%,60%); } /* #009900 */
+      .org-todo-strt { color: hsl( 60,100%,60%); } /* #999900 */
+      .org-todo-wait { color: hsl(240, 50%,50%); } /* #3f3f7f */
+      .org-todo-hold { color: hsl(180, 50%,50%); } /* #3f7f7f */
+      .org-todo-done { color: hsl(120, 50%,50%); } /* #3f7f3f */
+      .org-todo-kill { color: hsl(  0, 50%,50%); } /* #7f3f3f */
+      .org-todo-proj { color: hsl(240, 30%,30%); } /* #35354c */
+      .org-todo-loop { color: hsl(180, 30%,30%); } /* #354c4c */
       .warning {
         /* warning */
         color: #e78c45;
@@ -152,7 +165,8 @@
       </style>
       <script>
       document.addEventListener('DOMContentLoaded', function(event) {
-          for (const todoItem of document.getElementsByClassName('org-todo')) {
+          //for (const todoItem of document.getElementsByClassName('org-todo')) {
+          for (const todoItem of document.getElementsByTagName('span')) {
               const allowed = ['IDEA', 'TODO', 'STRT', 'WAIT', 'HOLD', 'DONE', 'KILL', 'PROJ', 'LOOP'];
               if (allowed.includes(todoItem.innerText)) {
                   todoItem.classList.add('org-todo-' + todoItem.innerText.trim().toLowerCase());
