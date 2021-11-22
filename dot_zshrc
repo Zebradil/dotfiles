@@ -74,7 +74,7 @@ bindkey '\ex' fzf-find-command-widget
 
 function frg() (
 rg "$@" --files-with-matches \
-    | fzf --preview "rg \"$@\" {}"
+    | fzf --preview "rg --color always -A5 -B5 \"$@\" {}"
 )
 
 # +=========================+
