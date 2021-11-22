@@ -71,6 +71,12 @@ fzf-find-command-widget() {
 zle     -N    fzf-find-command-widget
 bindkey '\ex' fzf-find-command-widget
 
+
+function frg() (
+rg "$@" --files-with-matches \
+    | fzf --preview "rg \"$@\" {}"
+)
+
 # +=========================+
 # | History Configuration   |
 # +-------------------------+
