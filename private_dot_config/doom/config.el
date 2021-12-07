@@ -59,6 +59,7 @@
 (use-package! org-super-agenda :hook (org-agenda-mode . org-super-agenda-mode))
 
 ;;; :lang org
+(after! org
 (setq org-directory "~/org/"
       org-archive-location (concat org-directory ".archive/%s::")
       org-roam-directory (concat org-directory "notes/")
@@ -70,15 +71,15 @@
       org-agenda-files (directory-files-recursively org-directory "\\.org$")
       org-todo-keyword-faces
       '(; Copied from css and processed with :'<,'>s/\v\.org-todo-(\w+)[^#]+(#\w+).*/("\U\1\E" :foreground "\2")
-        ("IDEA" :foreground "#003300")
-        ("TODO" :foreground "#009900")
-        ("STRT" :foreground "#999900")
-        ("WAIT" :foreground "#3f3f7f")
-        ("HOLD" :foreground "#3f7f7f")
-        ("DONE" :foreground "#3f7f3f")
-        ("KILL" :foreground "#7f3f3f")
-        ("PROJ" :foreground "#35354c")
-        ("LOOP" :foreground "#354c4c"))
+        ("IDEA" :foreground "#113300" :weight bold)
+        ("TODO" :foreground "#339900" :weig  bold)
+        ("STRT" :foreground "#999900" :weig  bold)
+        ("WAIT" :foreground "#3f3f7f" :weig  bold)
+        ("HOLD" :foreground "#3f7f7f" :weig  bold)
+        ("DONE" :foreground "#3f7f3f" :weig  bold)
+        ("KILL" :foreground "#7f3f3f" :weig  bold)
+        ("PROJ" :foreground "#35354c" :weig  bold)
+        ("LOOP" :foreground "#354c4c" :weig  bold))
       org-agenda-custom-commands
       '(
         ("n" "Agenda and all TODOs"
@@ -176,3 +177,4 @@
           }
       });
       </script>")
+)
