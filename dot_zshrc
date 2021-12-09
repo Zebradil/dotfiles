@@ -459,6 +459,7 @@ fi
 
 if [ $commands[direnv] ]; then eval "$(direnv hook zsh)"; fi
 
+if [ $commands[thefuck] ]; then eval "$(thefuck --alias)"; fi
 
 # +=========================+
 # | Various adjustments     |
