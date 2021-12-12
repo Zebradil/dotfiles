@@ -68,18 +68,19 @@
       org-journal-file-format "%Y%m%d.org"
       org-ellipsis " [...] "
       org-log-done 'note
+      org-refile-allow-creating-parent-nodes t
       org-agenda-files (directory-files-recursively org-directory "\\.org$")
       org-todo-keyword-faces
       '(; Copied from css and processed with :'<,'>s/\v\.org-todo-(\w+)[^#]+(#\w+).*/("\U\1\E" :foreground "\2")
-        ("IDEA" :foreground "#113300" :weight bold)
-        ("TODO" :foreground "#339900" :weig  bold)
-        ("STRT" :foreground "#999900" :weig  bold)
-        ("WAIT" :foreground "#3f3f7f" :weig  bold)
-        ("HOLD" :foreground "#3f7f7f" :weig  bold)
-        ("DONE" :foreground "#3f7f3f" :weig  bold)
-        ("KILL" :foreground "#7f3f3f" :weig  bold)
-        ("PROJ" :foreground "#35354c" :weig  bold)
-        ("LOOP" :foreground "#354c4c" :weig  bold))
+        ("IDEA" :foreground "#657f59" :weight bold)
+        ("TODO" :foreground "#3bb200" :weight bold)
+        ("STRT" :foreground "#b2b200" :weight bold)
+        ("WAIT" :foreground "#354c4c" :weight bold)
+        ("HOLD" :foreground "#354c4c" :weight bold)
+        ("DONE" :foreground "#354c35" :weight bold)
+        ("KILL" :foreground "#4c3535" :weight bold)
+        ("PROJ" :foreground "#35354c" :weight bold)
+        ("LOOP" :foreground "#354c4c" :weight bold))
       org-agenda-custom-commands
       '(
         ("n" "Agenda and all TODOs"
