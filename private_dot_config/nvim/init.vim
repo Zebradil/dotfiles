@@ -138,7 +138,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   " File icons in explorer windows
   Plug 'ryanoasis/vim-devicons'
 
-  Plug 'vimwiki/vimwiki'
+  " Plug 'vimwiki/vimwiki'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
   " Yaml folding
