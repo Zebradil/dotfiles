@@ -173,6 +173,8 @@ set shiftwidth=4
 set laststatus=2
 set updatetime=100
 set inccommand=nosplit
+" Avoid automatically splitting of long lines
+set formatoptions+=b
 
 set linebreak
 
