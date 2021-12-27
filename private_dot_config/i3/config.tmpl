@@ -228,12 +228,12 @@ bindsym $mod+Shift+r restart
 
 set $mode_system "System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown"
 mode $mode_system {
-    bindsym l exec --no-startup-id /home/zebradil/bin/i3exit lock, mode "default"
-    bindsym e exec --no-startup-id /home/zebradil/bin/i3exit logout, mode "default"
-    bindsym s exec --no-startup-id /home/zebradil/bin/i3exit suspend, mode "default"
-    bindsym h exec --no-startup-id /home/zebradil/bin/i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id /home/zebradil/bin/i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id /home/zebradil/bin/i3exit shutdown, mode "default"
+    bindsym l       mode "default", exec --no-startup-id /home/zebradil/bin/i3exit lock, mode "default"
+    bindsym e       mode "default", exec --no-startup-id /home/zebradil/bin/i3exit logout, mode "default"
+    bindsym s       mode "default", exec --no-startup-id /home/zebradil/bin/i3exit suspend, mode "default"
+    bindsym h       mode "default", exec --no-startup-id /home/zebradil/bin/i3exit hibernate, mode "default"
+    bindsym r       mode "default", exec --no-startup-id /home/zebradil/bin/i3exit reboot, mode "default"
+    bindsym Shift+s mode "default", exec --no-startup-id /home/zebradil/bin/i3exit shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -310,9 +310,9 @@ bindsym $mod+Shift+p mode $mode_player
 
 set $mode_flameshot "flameshot (gui, screen, full)"
 mode $mode_flameshot {
-    bindsym g exec flameshot gui
-    bindsym s exec flameshot screen
-    bindsym f exec flameshot full
+    bindsym g mode "default", exec flameshot gui
+    bindsym s mode "default", exec flameshot screen
+    bindsym f mode "default", exec flameshot full
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -322,9 +322,9 @@ bindsym $mod+Shift+s mode $mode_flameshot
 
 set $setxkbmap "setxkbmap: [l]enovo, [e]rgodox, [k]bp v60"
 mode $setxkbmap {
-    bindsym l exec {{ template "lenovo" }}
-    bindsym e exec {{ template "ergodox" }}
-    bindsym k exec {{ template "kbp v60" }}
+    bindsym l mode "default", exec {{ template "lenovo" }}
+    bindsym e mode "default", exec {{ template "ergodox" }}
+    bindsym k mode "default", exec {{ template "kbp v60" }}
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
