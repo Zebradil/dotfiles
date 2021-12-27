@@ -418,7 +418,7 @@ let g:ale_fixers = {
 \   'scss': ['prettier'],
 \   'rust': ['rustfmt'],
 \   'php': ['php_cs_fixer'],
-\   'go': ['gofmt'],
+\   'go': ['goimports'],
 \}
 
 let g:ale_linters = {
