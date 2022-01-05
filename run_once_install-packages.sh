@@ -32,6 +32,7 @@ yay -S --needed --answerclean N --answerdiff N \
     bat \
     bpytop \
     duf \
+    emacs \
     exa \
     fd \
     fzf \
