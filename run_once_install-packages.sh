@@ -25,13 +25,22 @@ header "Installing optional packages"
 
 yay -S --needed --answerclean N --answerdiff N \
     antibody-bin \
+    aspell \
+    aspell-de \
+    aspell-en \
+    aspell-ru \
     bat \
     bpytop \
     duf \
     exa \
     fd \
     fzf \
+    hunspell \
+    hunspell-de \
+    hunspell-en_us \
+    hunspell-ru \
     neovim \
+    node \
     ripgrep \
     tmux \
     z \
