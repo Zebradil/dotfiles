@@ -43,6 +43,7 @@ yay -S --needed --answerclean N --answerdiff N \
     neovim-git \
     nodejs \
     ripgrep \
+    rsync \
     tmux \
     z \
     zsh \
