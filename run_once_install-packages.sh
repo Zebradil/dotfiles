@@ -40,7 +40,7 @@ yay -S --needed --answerclean N --answerdiff N \
     hunspell-en_us \
     hunspell-ru \
     neovim-git \
-    node \
+    nodejs \
     ripgrep \
     tmux \
     z \
