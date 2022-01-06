@@ -187,6 +187,8 @@ alias kga="kubectl get -A"
 alias kc="kubectx"
 alias kn="kubens"
 
+alias dc1="docker-compose1"
+
 ec() { emacs "$@" </dev/null &>/dev/null &; disown }
 alias ecc="emacsclient -nc"
 
