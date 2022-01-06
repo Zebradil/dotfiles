@@ -45,6 +45,43 @@ yay -S --needed --answerclean N --answerdiff N \
     ripgrep \
     rsync \
     tmux \
+    yarn \
     z \
     zsh \
     zsh-completions
+
+# TODO: add desktop packages
+#       firefox
+#       i3-gaps
+#       i3blocks
+#       i3status
+#       lightdm
+#       lightdm-settings
+#       lightdm-slick-greeter
+#       noto-fonts
+#       noto-fonts-emoji
+#       rofi
+#       rofi-emoji
+#       ttf-dejavu
+#       ttf-iosevka
+#       ttf-ms-fonts
+#       pavucontrol
+#       pulseaudio
+#       pulseaudio-alsa
+#       nerd-fonts-jetbrains-mono
+#       feh
+#       lxappearance-gtk3
+#       xorg
+#       mint-themes
+#       mint-y-icons
+#       alacritty
+#       bitwarden
+#       keepassxc
+#       gnome-keyring
+#       ttf-roboto
+#       ttf-roboto-mono
+#       variety
+#       xclip
+#       xfce4-notifyd
+#       xkb-switch-i3
+#       xsel
