@@ -320,15 +320,15 @@ SPACESHIP_PROMPT_ORDER=(
 )
 spaceship_vi_mode_enable
 
-SPACESHIP_RPROMPT_ORDER=(docker docker_machine kubeconfig openstack)
+SPACESHIP_RPROMPT_ORDER=(docker_host kubeconfig openstack)
 
-spaceship_docker_machine() {
-  [[ -z $DOCKER_MACHINE_NAME ]] && return
+spaceship_docker_host() {
+  [[ -z $DOCKER_HOST ]] && return
 
   spaceship::section \
     "$SPACESHIP_DOCKER_COLOR" \
     "$SPACESHIP_DOCKER_PREFIX" \
-    "${SPACESHIP_DOCKER_SYMBOL} via ($DOCKER_MACHINE_NAME)" \
+    "${SPACESHIP_DOCKER_SYMBOL} via ($(docker info --format '{{.Name}}'))" \
     "$SPACESHIP_DOCKER_SUFFIX"
 }
 
