@@ -328,7 +328,7 @@ spaceship_docker_host() {
   spaceship::section \
     "$SPACESHIP_DOCKER_COLOR" \
     "$SPACESHIP_DOCKER_PREFIX" \
-    "${SPACESHIP_DOCKER_SYMBOL} via ($(docker info --format '{{.Name}}'))" \
+    "${SPACESHIP_DOCKER_SYMBOL} $(docker info --format '{{.Name}}')" \
     "$SPACESHIP_DOCKER_SUFFIX"
 }
 
