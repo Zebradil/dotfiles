@@ -320,7 +320,7 @@ SPACESHIP_PROMPT_ORDER=(
 )
 spaceship_vi_mode_enable
 
-SPACESHIP_RPROMPT_ORDER=(docker_machine kubeconfig openstack)
+SPACESHIP_RPROMPT_ORDER=(docker docker_machine kubeconfig openstack)
 
 spaceship_docker_machine() {
   [[ -z $DOCKER_MACHINE_NAME ]] && return
