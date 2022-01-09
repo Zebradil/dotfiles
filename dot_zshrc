@@ -166,6 +166,8 @@ fi
 # To use `sudo` with aliases
 alias sudo='sudo '
 
+alias lsblk+='lsblk -o "NAME,MAJ:MIN,RM,SIZE,RO,FSTYPE,MOUNTPOINT,UUID"'
+
 alias ls='exa'
 alias l='ls -l --group-directories-first --git --color-scale'
 alias la='l -a'
