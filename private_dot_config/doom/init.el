@@ -187,3 +187,7 @@
        :config
        ;;literate
        (default +bindings +smartparens))
+
+;; Whitelist environment variables collected by `doom env` and `doom sync`
+(when noninteractive
+  (add-to-list 'doom-env-whitelist "^SSH_"))
