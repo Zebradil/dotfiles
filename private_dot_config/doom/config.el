@@ -55,6 +55,14 @@
 ;; they are implemented.
 
 
+;;; :lang go
+(after! lsp-mode
+    (lsp-register-custom-settings '(
+                                       ;; ("gopls.experimentalWorkspaceModule" t t)
+                                       ("gopls.gofumpt" t)
+                                       ("gopls.staticcheck" t t)
+                                       )))
+
 
 (setq deft-directory "~/notes")
 
