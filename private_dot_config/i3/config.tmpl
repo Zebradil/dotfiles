@@ -284,11 +284,12 @@ mode $mode_displays {
 }
 bindsym $mod+Shift+d mode $mode_displays
 
-set $mode_wallpaper "wallpaper: d[elete], n[ext], p[revious]"
+set $mode_wallpaper "wallpaper: d[elete], n[ext], p[revious], f[avorite]"
 mode $mode_wallpaper {
     bindsym d exec variety --trash
     bindsym n exec variety --next
     bindsym p exec variety --previous
+    bindsym f exec variety --favorite
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
