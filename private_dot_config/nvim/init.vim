@@ -382,6 +382,10 @@ let g:vimwiki_global_ext = 0
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
+" XML files
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
+
 " for .hql files
 au BufNewFile,BufRead *.hql set filetype=hive expandtab
 " for .q files
