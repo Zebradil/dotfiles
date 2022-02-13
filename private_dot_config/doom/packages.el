@@ -50,3 +50,4 @@
 ;(unpin! t)
 
 (package! org-super-agenda :recipe (:branch "master"))
+(package! dotenv-mode)
