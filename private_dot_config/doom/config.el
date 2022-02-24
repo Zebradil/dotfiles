@@ -63,6 +63,12 @@
                                        ("gopls.staticcheck" t t)
                                        )))
 
+(after! company
+    (setq +lsp-company-backends '(company-tabnine :separate company-capf company-yasnippet))
+    (setq company-show-numbers t)
+    (setq company-idle-delay 0)
+    )
+
 
 (setq deft-directory "~/notes")
 

@@ -51,3 +51,4 @@
 
 (package! org-super-agenda :recipe (:branch "master"))
 (package! dotenv-mode)
+(package! company-tabnine)
