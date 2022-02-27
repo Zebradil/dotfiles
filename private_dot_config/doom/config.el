@@ -22,7 +22,7 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (setq doom-font (font-spec :family "Iosevka" :size 18)
-      doom-variable-pitch-font (font-spec :family "Iosevka") ; inherits `doom-font''s :size
+      doom-variable-pitch-font (font-spec :family "Iosevka" :size 16) ; inherits `doom-font''s :size
       )
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
