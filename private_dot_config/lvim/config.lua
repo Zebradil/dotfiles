@@ -138,13 +138,14 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Additional Plugins
 lvim.plugins = {
-{"towolf/vim-helm"},
-{"editorconfig/editorconfig-vim"},
-{"folke/tokyonight.nvim"},
-{
-    "folke/trouble.nvim",
-    cmd = "TroubleToggle",
-  },
+    {"pedrohdz/vim-yaml-folds"},
+    {"towolf/vim-helm"},
+    {"editorconfig/editorconfig-vim"},
+    {"folke/tokyonight.nvim"},
+    {
+        "folke/trouble.nvim",
+        cmd = "TroubleToggle",
+    },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
