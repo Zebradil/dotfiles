@@ -64,16 +64,16 @@ lvim.builtin.nvimtree.show_icons.git = 0
 lvim.builtin.treesitter.ensure_installed = {
   "bash",
   "c",
+  "css",
+  "hcl",
+  "java",
   "javascript",
   "json",
   "lua",
   "python",
-  "typescript",
-  "tsx",
-  "css",
-  "hcl",
   "rust",
-  "java",
+  "tsx",
+  "typescript",
   "yaml",
 }
 
@@ -118,6 +118,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 --     filetypes = { "typescript", "typescriptreact" },
 --   },
 -- }
+lvim.lang.terraform.formatters = { { exe = 'terraform_fmt' } }
 
 -- -- set additional linters
 -- local linters = require "lvim.lsp.null-ls.linters"
