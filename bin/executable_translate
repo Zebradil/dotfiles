@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
-notify-send "$(xsel | trans -show-alternatives=n -show-languages=n -show-original=n -no-ansi)"
+notify-send "$(\
+    xsel \
+    | trans -show-alternatives=n -show-languages=n -show-original=n -no-ansi \
+    | fold --spaces --width=100 \
+)"
