@@ -422,8 +422,18 @@ update_spacemacs_packages() {
 set_kubeconfig_var() {
     export KUBECONFIG=$(echo ~/.kube/*clusters/*.y?ml(N) | tr ' ' ':')
 }
-
 set_kubeconfig_var
+
+osacme() {
+  local domain="${1:?Domain name is required}"
+  env $(\
+      yq eval --output-format props \
+      '.clouds[env(OS_CLOUD)] | explode(.) | (with_entries(select(.key != "auth")), .auth)' \
+      ~/.config/openstack/clouds.yaml \
+      | sed -r 's/^(\w+) = (.*)/\UOS_\1\E=\2/' \
+      | xargs -d '\n') \
+    acme.sh --issue --dns dns_openstack --domain "${domain}"
+}
 
 # +=========================+
 # | Autocompletion          |
