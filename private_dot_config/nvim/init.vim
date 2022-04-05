@@ -111,7 +111,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'machakann/vim-sandwich'
 
   " Syntax check
-  Plug 'w0rp/ale'
+  " Plug 'w0rp/ale'
 
   " Autoformat
   Plug 'Chiel92/vim-autoformat'
