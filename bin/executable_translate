@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+notify-send "$(xsel | trans -show-alternatives=n -show-languages=n -show-original=n -no-ansi)"
