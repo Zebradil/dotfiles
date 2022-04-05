@@ -425,14 +425,13 @@ set_kubeconfig_var() {
 set_kubeconfig_var
 
 osacme() {
-  local domain="${1:?Domain name is required}"
   env $(\
       yq eval --output-format props \
       '.clouds[env(OS_CLOUD)] | explode(.) | (with_entries(select(.key != "auth")), .auth)' \
       ~/.config/openstack/clouds.yaml \
       | sed -r 's/^(\w+) = (.*)/\UOS_\1\E=\2/' \
       | xargs -d '\n') \
-    acme.sh --issue --dns dns_openstack --domain "${domain}"
+    acme.sh --issue --dns dns_openstack --domain "${@}"
 }
 
 # +=========================+
