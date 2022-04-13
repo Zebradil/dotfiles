@@ -327,10 +327,14 @@ SPACESHIP_RPROMPT_ORDER=(docker_host kubeconfig openstack)
 spaceship_docker_host() {
   [[ -z $DOCKER_HOST ]] && return
 
+  local name
+  name=$(timeout 1 docker info --format "{{.Name}}")
+  [[ -z $name ]] && return
+
   spaceship::section \
     "$SPACESHIP_DOCKER_COLOR" \
     "$SPACESHIP_DOCKER_PREFIX" \
-    "${SPACESHIP_DOCKER_SYMBOL} $(docker info --format '{{.Name}}')" \
+    "${SPACESHIP_DOCKER_SYMBOL} ${name}" \
     "$SPACESHIP_DOCKER_SUFFIX"
 }
 
