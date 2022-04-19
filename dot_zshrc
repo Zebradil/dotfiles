@@ -1,4 +1,4 @@
-# vim: set ft=zsh :
+# vim: set filetype=zsh shiftwidth=2 softtabstop=2 expandtab:
 
 # +=========================+
 # | Library                 |
@@ -300,7 +300,7 @@ fi
 # +-------------------------+
 
 SPACESHIP_PROMPT_ORDER=(
-    #time          # Time stampts section
+    time          # Time stampts section
     user          # Username section
     dir           # Current directory section
     host          # Hostname section
@@ -364,13 +364,12 @@ spaceship_kubeconfig() {
 }
 
 spaceship_openstack() {
-  [[ -z $OS_PROJECT_NAME ]] && return
+  local openstack="${OS_PROJECT_NAME:-$OS_TENANT_NAME}"
+  openstack="${openstack:-$OS_CLOUD}"
 
-  spaceship::section \
-    "#af5f00" \
-    "" \
-    "OS:$OS_PROJECT_NAME" \
-    ""
+  [[ -z $openstack ]] && return
+
+  spaceship::section "#af5f00" "" "OS:$openstack" ""
 }
 
 # +=========================+
