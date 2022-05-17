@@ -79,6 +79,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Language pack
   Plug 'sheerun/vim-polyglot'
 
+  " Assembly
+  Plug 'Shirk/vim-gas'
+
   " Helm
   Plug 'towolf/vim-helm'
 
