@@ -526,3 +526,8 @@ fi
 # +-------------------------+
 
 [[ -r "$HOME/.zshrc.local" ]] && . $HOME/.zshrc.local || true
+
+# pnpm
+export PNPM_HOME="/home/zebradil/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
