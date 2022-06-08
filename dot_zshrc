@@ -92,6 +92,16 @@ rg "$@" --files-with-matches \
     | fzf --preview "rg --color always -A5 -B5 \"$@\" {}"
 )
 
+function chct() (
+  local alclr=alacritty-colorscheme
+  $alclr list \
+    | fzf "$@" --preview "
+      $alclr apply {}
+      bat --color=always --plain --line-range 52:68 ~/.zshrc
+      echo
+      exa -l /tmp"
+)
+
 # +=========================+
 # | History Configuration   |
 # +-------------------------+
@@ -144,7 +154,7 @@ export MANPAGER='nvim +Man!'
 # | Antibody plugin manager |
 # +-------------------------+
 
-readonly ANTIBODY_PLUGINS_FILE="${HOME}/.zsh_plugins.sh"
+ANTIBODY_PLUGINS_FILE="${HOME}/.zsh_plugins.sh"
 
 if [ ! -f "${ANTIBODY_PLUGINS_FILE}" -a $commands[antibody] ]
 then
