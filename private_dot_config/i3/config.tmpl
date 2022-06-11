@@ -73,14 +73,28 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start a program launcher
-bindsym $mod+d exec rofi -lines 18 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'DejaVu Sans Condensed 12'
+bindsym $mod+d exec \
+    rofi \
+    -lines 18 \
+    -padding 18 \
+    -width 60 \
+    -location 0 \
+    -show drun \
+    -sidebar-mode \
+    -columns 3 \
+    -font 'Roboto Mono 12'
 # start emoji picker
 bindsym $mod+y exec rofi -show emoji -modi emoji
 
 # toggle alacritty colorscheme
-set $alacritty_light_color base16-classic-light-256.yml
-set $alacritty_dark_color base16-classic-dark-256.yml
-bindsym $mod+Shift+t exec alacritty-colorscheme -V toggle $alacritty_light_color $alacritty_dark_color && notify-send "Alacritty Colorscheme" `alacritty-colorscheme status`
+set $alacritty_light_color base16/base16-classic-light-256.yml
+set $alacritty_dark_color  base16/base16-classic-dark-256.yml
+bindsym $mod+Shift+t exec \
+    alacritty-colorscheme \
+        --base16_vim \
+        --config_file ~/.config/alacritty/colors.yml \
+        toggle $alacritty_light_color $alacritty_dark_color \
+    && notify-send "Alacritty Colorscheme" `alacritty-colorscheme status`
 
 # toggle action on lid close
 bindsym $mod+Ctrl+l exec ~/bin/toggle-lid-close-action
