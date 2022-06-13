@@ -90,7 +90,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " YTT and Starlark
   Plug 'cappyzawa/starlark.vim'
-  Plug 'cappyzawa/ytt.vim'
+  Plug 'vmware-tanzu/ytt.vim'
 
   " Nginx
   Plug 'vim-scripts/nginx.vim'
