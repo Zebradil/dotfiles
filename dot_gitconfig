@@ -7,10 +7,15 @@
     helper = /usr/lib/git-core/git-credential-libsecret
 [core]
     autocrlf = input
-    pager = delta --light
+    pager = delta
     excludesfile = /home/zebradil/.gitignore_global
 [interactive]
     diffFilter = delta --color-only
+[delta]
+    navigate = true
+    light = false
+[diff]
+    colorMoved = default
 [push]
     default = simple
     followTags = true
