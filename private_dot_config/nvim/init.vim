@@ -79,6 +79,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Language pack
   Plug 'sheerun/vim-polyglot'
 
+  " Conseal ANSI escape sequences and highlight
+  Plug 'powerman/vim-plugin-AnsiEsc'
+
   " Assembly
   Plug 'Shirk/vim-gas'
 
