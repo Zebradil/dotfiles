@@ -22,7 +22,7 @@ header "Updating Emacs Doom"
 DOOM_DIR="{{.emacs_doom_dir}}"
 DOOM_DIR="${DOOM_DIR/#\~/$HOME}"
 readonly DOOM_DIR
-"${DOOM_DIR}/bin/doom" --yes upgrade
+"${DOOM_DIR}/bin/doom" --force upgrade
 {{ end }}
 
 
