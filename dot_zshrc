@@ -196,7 +196,7 @@ alias sudo='sudo '
 alias lsblk+='lsblk -o "NAME,MAJ:MIN,RM,SIZE,RO,FSTYPE,MOUNTPOINT,UUID"'
 
 alias ls='exa'
-alias l='ls -l --group-directories-first --git --color-scale'
+alias l='ls -l --group-directories-first --git' # --color-scale (has issues on white background)
 alias la='l -a'
 alias lt='la -s newest'
 
