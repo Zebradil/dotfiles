@@ -3,7 +3,7 @@
 set -euo pipefail
 
 header(){
-    printf " :$1: " | xargs -d: -n1 printf '\033[1;30;42m %-40s \033[0m\n'
+    printf " :%s: " "$1" | xargs -d: -n1 printf '\033[1;30;42m %-40s \033[0m\n'
 }
 
 header "Installing base packages"
