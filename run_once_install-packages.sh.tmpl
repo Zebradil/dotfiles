@@ -22,7 +22,7 @@ then
     makepkg -si
 fi
 
-{{ if or .packages.headless .packages.desktop -}}
+{{ if .package_mode -}}
 header "Installing optional headless packages"
 
 yay -S --needed --answerclean N --answerdiff N \
@@ -53,7 +53,7 @@ yay -S --needed --answerclean N --answerdiff N \
     zsh-completions
 {{ end -}}
 
-{{ if .packages.desktop -}}
+{{ if eq .package_mode "desktop-mini" -}}
 header "Installing optional minimal desktop packages"
 
 yay -S --needed --answerclean N --answerdiff N \
@@ -76,7 +76,7 @@ yay -S --needed --answerclean N --answerdiff N \
     xorg
 {{ end -}}
 
-{{ if eq .packages.desktop "full" -}}
+{{ if eq .package_mode "desktop-full" -}}
 header "Installing optional desktop-lite packages"
 
 yay -S --needed --answerclean N --answerdiff N \
@@ -88,10 +88,7 @@ yay -S --needed --answerclean N --answerdiff N \
     keepassxc \
     lightdm-settings \
     lxappearance-gtk3 \
-    mint-themes \
-    mint-y-icons \
     neovim-qt \
-    nerd-fonts-jetbrains-mono \
     rofi-emoji \
     ttf-dejavu \
     ttf-iosevka \
