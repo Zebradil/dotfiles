@@ -8,6 +8,21 @@ encryption = "gpg"
 
 [data]
 
+{{- $package_modes := list "headless" "desktop-mini" "desktop-full" -}}
+{{- $default_package_mode := first $package_modes -}}
+{{- $package_mode := get . "package_mode" -}}
+{{- if not $package_mode -}}
+{{-   $package_mode = join ", " $package_modes
+      | printf "package_mode [%s]"
+      | promptString -}}
+{{- end -}}
+{{- if has $package_mode $package_modes -}}
+    packages = {{ $package_mode }}
+{{- else -}}
+{{-   printf "package mode '%s' is incorrect, falling back to %s" $package_mode $default_package_mode | writeToStdout -}}
+    packages = {{ first $package_modes }}
+{{- end }}
+
 {{- $battery := get . "battery" -}}
 {{- if and (not $battery) (not (hasKey . "battery")) -}}
 {{-   $battery = promptBool "battery [yes/no]" -}}
