@@ -36,6 +36,7 @@
 
 (setq scroll-margin 5)
 
+(setq which-key-idle-delay 0.5)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -65,7 +66,7 @@
 
 (after! company
     (setq +lsp-company-backends '(company-tabnine :separate company-capf company-yasnippet))
-    (setq company-show-numbers t)
+    (setq company-show-quick-access t)
     (setq company-idle-delay 0)
     )
 
