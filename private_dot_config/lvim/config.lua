@@ -147,15 +147,51 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Additional Plugins
 lvim.plugins = {
-  {"pedrohdz/vim-yaml-folds"},
-  {"towolf/vim-helm"},
-  -- {"editorconfig/editorconfig-vim"},
-  {"folke/tokyonight.nvim"},
+  { "pedrohdz/vim-yaml-folds" },
+  { "towolf/vim-helm" },
+  { "editorconfig/editorconfig-vim" },
+  { "folke/tokyonight.nvim" },
+  { "folke/trouble.nvim", cmd = "TroubleToggle" },
+  { "zbirenbaum/copilot.lua",
+    event = { "VimEnter" },
+    config = function()
+      vim.defer_fn(function()
+        require("copilot").setup {
+          plugin_manager_path = get_runtime_dir() .. "/site/pack/packer",
+        }
+      end, 100)
+    end,
+  },
+  { "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua", "nvim-cmp" },
+  },
   {
-    "folke/trouble.nvim",
-    cmd = "TroubleToggle",
+    "folke/todo-comments.nvim",
+    event = "BufRead",
+    config = function()
+      require("todo-comments").setup()
+    end,
+  },
+  {
+    "tpope/vim-surround",
+
+    -- make sure to change the value of `timeoutlen` if it's not triggering correctly, see https://github.com/tpope/vim-surround/issues/117
+    -- setup = function()
+    --  vim.o.timeoutlen = 500
+    -- end
+  },
+  {
+    "andymass/vim-matchup",
+    event = "CursorMoved",
+    config = function()
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+    end,
   },
 }
+
+-- Can not be placed into the config method of the plugins.
+lvim.builtin.cmp.formatting.source_names["copilot"] = "(Copilot)"
+table.insert(lvim.builtin.cmp.sources, 1, { name = "copilot" })
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
