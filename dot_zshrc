@@ -161,18 +161,18 @@ ANTIBODY_PLUGINS_FILE="${HOME}/.zsh_plugins.sh"
 if [ ! -f "${ANTIBODY_PLUGINS_FILE}" -a $commands[antibody] ]
 then
     readonly ANTIBODY_PLUGINS=$(<<EOF
-jeffreytse/zsh-vi-mode
-unixorn/git-extra-commands
-robbyrussell/oh-my-zsh path:lib/git.zsh
-robbyrussell/oh-my-zsh path:plugins/git
-zdharma-continuum/history-search-multi-word
-hcgraf/zsh-sudo
-robbyrussell/oh-my-zsh path:plugins/docker-machine
-zsh-users/zsh-history-substring-search
-zsh-users/zsh-autosuggestions
-zsh-users/zsh-syntax-highlighting
 denysdovhan/spaceship-prompt
+hcgraf/zsh-sudo
+jeffreytse/zsh-vi-mode
+robbyrussell/oh-my-zsh path:lib/git.zsh
+robbyrussell/oh-my-zsh path:plugins/docker-machine
+robbyrussell/oh-my-zsh path:plugins/git
+unixorn/git-extra-commands
 zchee/zsh-completions
+zdharma-continuum/history-search-multi-word
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
+zsh-users/zsh-syntax-highlighting
 EOF
     )
     antibody bundle <<< "${ANTIBODY_PLUGINS}" > "${ANTIBODY_PLUGINS_FILE}"
