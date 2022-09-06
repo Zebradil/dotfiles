@@ -161,7 +161,8 @@ ANTIBODY_PLUGINS_FILE="${HOME}/.zsh_plugins.sh"
 if [ ! -f "${ANTIBODY_PLUGINS_FILE}" -a $commands[antibody] ]
 then
     readonly ANTIBODY_PLUGINS=$(<<EOF
-denysdovhan/spaceship-prompt
+spaceship-prompt/spaceship-prompt
+spaceship-prompt/spaceship-vi-mode
 hcgraf/zsh-sudo
 jeffreytse/zsh-vi-mode
 robbyrussell/oh-my-zsh path:lib/git.zsh
@@ -317,27 +318,12 @@ SPACESHIP_PROMPT_ORDER=(
     dir           # Current directory section
     host          # Hostname section
     git           # Git section (git_branch + git_status)
-    # hg            # Mercurial section (hg_branch  + hg_status)
     package       # Package version
-    # node          # Node.js section
-    # ruby          # Ruby section
-    # elm           # Elm section
-    # elixir        # Elixir section
-    # xcode         # Xcode section
-    # swift         # Swift section
     golang        # Go section
     php           # PHP section
     rust          # Rust section
-    # haskell       # Haskell Stack section
-    # julia         # Julia section
-    # docker        # Docker section
-    # aws           # Amazon Web Services section
     venv          # virtualenv section
-    # conda         # conda virtualenv section
-    pyenv         # Pyenv section
-    # dotnet        # .NET section
-    # ember         # Ember.js section
-    # kubectl       # Kubectl context section
+    python        # Python section
     terraform     # Terraform workspace section
     exec_time     # Execution time
     line_sep      # Line break
@@ -355,18 +341,19 @@ spaceship_docker_host() {
   [[ -z $DOCKER_HOST ]] && return
 
   local name
-  name=$(timeout 1 docker info --format "{{.Name}}")
+  name="$(timeout 1 docker info --format "{{.Name}}")"
 
   if [[ -z $name ]]; then
       _zshrc_warn "Command timed out: docker info"
       return
   fi
 
-  spaceship::section \
-    "$SPACESHIP_DOCKER_COLOR" \
-    "$SPACESHIP_DOCKER_PREFIX" \
-    "${SPACESHIP_DOCKER_SYMBOL} ${name}" \
-    "$SPACESHIP_DOCKER_SUFFIX"
+  spaceship::section::v4 \
+    --color "$SPACESHIP_DOCKER_COLOR" \
+    --prefix "$SPACESHIP_DOCKER_PREFIX" \
+    --symbol "$SPACESHIP_DOCKER_SYMBOL" \
+    --suffix "$SPACESHIP_DOCKER_SUFFIX" \
+    "$name"
 }
 
 spaceship_kubeconfig() {
@@ -381,7 +368,7 @@ spaceship_openstack() {
 
   [[ -z $openstack ]] && return
 
-  spaceship::section "#af5f00" "" "OS:$openstack" ""
+  spaceship::section::v4 --color "#af5f00" "OS:$openstack"
 }
 
 # +=========================+
