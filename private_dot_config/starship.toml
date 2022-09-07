@@ -1,0 +1,93 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+add_newline = true
+
+format = """$all"""
+
+right_format = """${custom.docker_host}$kubernetes"""
+
+[sudo]
+disabled = false
+
+[kubernetes]
+disabled = false
+format = '[$symbol$context( \($namespace\))]($style)'
+
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[directory]
+read_only = " "
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = " "
+
+[python]
+symbol = " "
+
+[spack]
+symbol = "🅢 "
+
+[rust]
+symbol = " "
+
+[openstack]
+# Removed $cloud, because it's always the same as $project
+format = "on [$symbol$project]($style) "
+
+[custom.docker_host]
+symbol = " "
+command = ''' docker info --format "{{.Name}}" '''
+when = ''' [ ! -z $DOCKER_HOST ] '''
+style = "blue bold"
+format = "[$symbol$output]($style)"
