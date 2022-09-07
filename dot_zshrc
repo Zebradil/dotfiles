@@ -312,6 +312,69 @@ fi
 eval "$(starship init zsh)"
 
 # +=========================+
+# | Spaceship prompt        |
+# +-------------------------+
+
+SPACESHIP_PROMPT_ORDER=(
+    time          # Time stampts section
+    user          # Username section
+    dir           # Current directory section
+    host          # Hostname section
+    git           # Git section (git_branch + git_status)
+    package       # Package version
+    golang        # Go section
+    php           # PHP section
+    rust          # Rust section
+    venv          # virtualenv section
+    python        # Python section
+    terraform     # Terraform workspace section
+    exec_time     # Execution time
+    line_sep      # Line break
+    battery       # Battery level and status
+    vi_mode       # Vi-mode indicator
+    jobs          # Background jobs indicator
+    exit_code     # Exit code section
+    char          # Prompt character
+)
+# spaceship_vi_mode_enable
+
+SPACESHIP_RPROMPT_ORDER=(docker_host kubeconfig openstack)
+
+spaceship_docker_host() {
+  [[ -z $DOCKER_HOST ]] && return
+
+  local name
+  name="$(timeout 1 docker info --format "{{.Name}}")"
+
+  if [[ -z $name ]]; then
+      _zshrc_warn "Command timed out: docker info"
+      return
+  fi
+
+  spaceship::section::v4 \
+    --color "$SPACESHIP_DOCKER_COLOR" \
+    --prefix "$SPACESHIP_DOCKER_PREFIX" \
+    --symbol "$SPACESHIP_DOCKER_SYMBOL" \
+    --suffix "$SPACESHIP_DOCKER_SUFFIX" \
+    "$name"
+}
+
+spaceship_kubeconfig() {
+  [[ -z $KUBECONFIG ]] && return
+
+  spaceship_kubectl_context
+}
+
+spaceship_openstack() {
+  local openstack="${OS_PROJECT_NAME:-$OS_TENANT_NAME}"
+  openstack="${openstack:-$OS_CLOUD}"
+
+  [[ -z $openstack ]] && return
+
+  spaceship::section::v4 --color "#af5f00" "OS:$openstack"
+}
+
+# +=========================+
 # | Library                 |
 # +-------------------------+
 
