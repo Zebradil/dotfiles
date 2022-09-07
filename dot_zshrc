@@ -161,8 +161,6 @@ ANTIBODY_PLUGINS_FILE="${HOME}/.zsh_plugins.sh"
 if [ ! -f "${ANTIBODY_PLUGINS_FILE}" -a $commands[antibody] ]
 then
     readonly ANTIBODY_PLUGINS=$(<<EOF
-spaceship-prompt/spaceship-prompt
-spaceship-prompt/spaceship-vi-mode
 hcgraf/zsh-sudo
 jeffreytse/zsh-vi-mode
 robbyrussell/oh-my-zsh path:lib/git.zsh
@@ -307,6 +305,11 @@ if [ $commands[npm] ]; then
     export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 fi
 
+# +=========================+
+# | Starship prompt         |
+# +=========================+
+
+eval "$(starship init zsh)"
 
 # +=========================+
 # | Spaceship prompt        |
@@ -333,7 +336,7 @@ SPACESHIP_PROMPT_ORDER=(
     exit_code     # Exit code section
     char          # Prompt character
 )
-spaceship_vi_mode_enable
+# spaceship_vi_mode_enable
 
 SPACESHIP_RPROMPT_ORDER=(docker_host kubeconfig openstack)
 
