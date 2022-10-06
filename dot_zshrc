@@ -212,8 +212,8 @@ alias k="kubectl"
 alias kd="kubectl describe"
 alias kgy="kubectl get -oyaml"
 alias kga="kubectl get -A"
-alias kc="kubectx"
-alias kn="kubens"
+alias kc="kubie ctx"
+alias kn="kubie ns"
 
 alias dc1="docker-compose1"
 
