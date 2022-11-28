@@ -390,8 +390,19 @@ bar {
 #client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
 #client.background           #2f343f
 
-for_window [title="^zoom$"] floating enable
 for_window [class=".*"] border pixel 1
 smart_borders on
 hide_edge_borders both
 for_window [floating] move position center
+
+# Set Zoom notification window to floating with no focus
+for_window [title="^zoom\s?$"] floating enable
+no_focus [title="^zoom\s?$"]
+
+# For meetings that you have joined via a link
+for_window [title="^join\?action=join.*$"] floating enable
+no_focus [title="^join\?action=join.*$"]
+
+# Alternatively if the popups are annoying you...
+# for_window [title="^zoom\s?$"] kill
+# for_window [title="^join\?action=join.*$"] kill
