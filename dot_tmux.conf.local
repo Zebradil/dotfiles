@@ -186,7 +186,7 @@ tmux_conf_theme_status_left=' ❐ #S '
 tmux_conf_theme_status_right='\
 #{prefix}#{pairing}#{synchronized} , \
 #(/bin/bash $HOME/dotfiles/tmux/kube.tmux 250 red cyan) | \
-#(timew t :day | rg GEC | awk "{print \$2}") | \
+#(timew t :day | rg SP | awk "{print \$2}") | \
 #(timew | head -n1 | rg "Tracking (.*)" -r "\$1" || echo no tracking) | \
 #{username_ssh}#{root} | \
 #{hostname_ssh} '
