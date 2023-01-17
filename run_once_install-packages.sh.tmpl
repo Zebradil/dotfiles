@@ -57,14 +57,14 @@ yay -S --needed --answerclean N --answerdiff N \
     zsh-completions
 {{ end -}}
 
-{{ if eq .package_mode "desktop-mini" -}}
+{{ if or (eq .package_mode "desktop-mini") (eq .package_mode "desktop-full") -}}
 header "Installing optional minimal desktop packages"
 
 yay -S --needed --answerclean N --answerdiff N \
     alacritty \
     awesome-terminal-fonts \
     blueberry \
-    i3-gaps \
+    i3-wm \
     i3blocks \
     i3status \
     lightdm \
