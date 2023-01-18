@@ -1,6 +1,8 @@
 #!/bin/bash
 # vim: set ft=bash :
 
+UPDATE_FREQUENCY='7 days'
+
 set -euo pipefail
 
 if ! command -v emacs &>/dev/null; then
@@ -12,35 +14,25 @@ header(){
     printf " :$1: " | xargs -d: -n1 printf '\033[1;30;42m %-40s \033[0m\n'
 }
 
-header "Updating Chemacs2"
-
-git -C "${HOME}/.emacs.d" pull
-
 {{ if ne .emacs_doom_dir "no" -}}
-header "Updating Emacs Doom"
 
-DOOM_DIR="{{.emacs_doom_dir}}"
-DOOM_DIR="${DOOM_DIR/#\~/$HOME}"
-readonly DOOM_DIR
-"${DOOM_DIR}/bin/doom" --force upgrade
+state_file="{{.chezmoi.cacheDir}}/emacs-updated"
+now_file="$(mktemp)"
+touch -d "$UPDATE_FREQUENCY ago" "$now_file"
+
+if [[ ! -f "${state_file}" || "${state_file}" -ot "${now_file}" ]]
+then
+    header "Updating Emacs Doom"
+
+    DOOM_DIR="{{.emacs_doom_dir}}"
+    DOOM_DIR="${DOOM_DIR/#\~/$HOME}"
+    readonly DOOM_DIR
+    "${DOOM_DIR}/bin/doom" --force upgrade
+
+    touch "${state_file}"
+
+    header "Restarting emacs.service"
+    systemctl restart --no-block --user emacs
+fi
+
 {{ end }}
-
-
-{{ if ne .emacs_spacemacs_dir "no" -}}
-header "Updating Spacemacs"
-
-SPACEMACS_DIR="{{.emacs_spacemacs_dir}}"
-SPACEMACS_DIR="${SPACEMACS_DIR/#\~/$HOME}"
-readonly SPACEMACS_DIR
-git -C "$SPACEMACS_DIR" pull
-
-emacs \
-    -l "${HOME}/.emacs.d/init.el" \
-    --with-profile spacemacs \
-    --batch \
-    --eval="(configuration-layer/update-packages t)"
-{{ end }}
-
-header "Restarting emacs.service"
-
-systemctl restart --no-block --user emacs

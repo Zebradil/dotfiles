@@ -12,11 +12,10 @@ header(){
 }
 
 
-{{ if (and (eq .emacs_doom_dir "no") (eq .emacs_spacemacs_dir "no")) -}}
+{{ if eq .emacs_doom_dir "no" -}}
 warning "Skip emacs configuration: no emacs distribution is selected"
 {{ else }}
 
-{{ if (ne .emacs_doom_dir "no") -}}
 DOOM_DIR="{{.emacs_doom_dir}}"
 DOOM_DIR="${DOOM_DIR/#\~/$HOME}"
 readonly DOOM_DIR
@@ -26,29 +25,6 @@ then
     header "Installing Doom-Emacs"
     git clone https://github.com/hlissner/doom-emacs "${DOOM_DIR}"
     "${DOOM_DIR}/bin/doom" install
-fi
-{{ end }}
-
-{{ if (ne .emacs_spacemacs_dir "no") -}}
-SPACEMACS_DIR="{{.emacs_spacemacs_dir}}"
-SPACEMACS_DIR="${SPACEMACS_DIR/#\~/$HOME}"
-readonly SPACEMACS_DIR
-
-if [[ ! -d "${SPACEMACS_DIR}" ]]
-then
-    header "Installing Spacemacs"
-    git clone https://github.com/syl20bnr/spacemacs "${SPACEMACS_DIR}"
-fi
-{{ end }}
-
-readonly CHEMACS2_URL="https://github.com/plexus/chemacs2.git"
-
-if [[ "$( set +e; git -C ~/.emacs.d remote get-url origin 2>/dev/null; set -e)" != "${CHEMACS2_URL}" ]]
-then
-    header "Installing Chemacs2"
-    rm -f ~/.emacs
-    rm -rf ~/.emacs.d
-    git clone "${CHEMACS2_URL}" ~/.emacs.d
 fi
 
 {{ end }}
