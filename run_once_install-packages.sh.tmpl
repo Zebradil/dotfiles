@@ -104,3 +104,14 @@ yay -S --needed --answerclean N --answerdiff N \
     xkb-switch-i3 \
     xsel
 {{ end -}}
+
+{{ if .battery -}}
+header "Installing optional packages for battery powered devices"
+
+yay -S --needed --answerclean N --answerdiff N \
+    light \
+    powertop \
+    tlp \
+    tlp-rdw
+{{ end -}}
+
