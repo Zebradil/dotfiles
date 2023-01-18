@@ -12,7 +12,7 @@ insist() {
     done
 }
 
-function mcd() {
+mcd() {
     if [ -d "$1" ]; then
         log::info "$1 exists"
     else
@@ -39,37 +39,20 @@ if lib::check_commands bat; then
     alias caty='bat -lyaml'
 fi
 
-if lib::check_commands terraform; then
-    alias tf="terraform"
-fi
-
-if lib::check_commands openstack; then
-    alias os="openstack"
+if lib::check_commands openstack acme.sh yq; then
+    my:openstack:acme.sh() {
+        env $(\
+          yq eval --output-format props \
+          '.clouds[env(OS_CLOUD)] | explode(.) | (with_entries(select(.key != "auth")), .auth)' \
+          ~/.config/openstack/clouds.yaml \
+          | sed -r 's/^(\w+) = (.*)/\UOS_\1\E=\2/' \
+          | xargs -d '\n') \
+        acme.sh --issue --dns dns_openstack --domain "${@}"
+    }
 fi
 
 if lib::check_commands rsync; then
     alias cp="rsync --archive --human-readable --partial --progress"
-fi
-
-if lib::check_commands kubectl; then
-    alias k="kubectl"
-    alias kd="kubectl describe"
-    alias kgy="kubectl get -oyaml"
-    alias kga="kubectl get -A"
-fi
-
-if lib::check_commands kubie; then
-    alias kc="kubie ctx"
-    alias kn="kubie ns"
-fi
-
-if lib::check_commands emacs emacsclient; then
-    ec() {
-        emacs "$@" </dev/null &>/dev/null &
-        disown
-    }
-
-    alias ecc="emacsclient -nc"
 fi
 
 if lib::check_commands trans; then
@@ -122,6 +105,41 @@ if lib::check_commands alacritty-colorscheme fzf exa bat; then
               echo
               exa -l /tmp"
     )
+fi
+
+if lib::check_commands fzf fd; then
+    # Use fd and fzf to get the args to a command.
+    # Works only with zsh
+    # Examples:
+    # f mv # To move files. You can write the destination after selecting the files.
+    # f 'echo Selected:'
+    # f 'echo Selected music:' --extention mp3
+    # fm rm # To rm files in current directory
+    f() {
+        sels=( "${(@f)$(fd "${fd_default[@]}" "${@:2}"| fzf)}" )
+        test -n "$sels" && print -z -- "$1 ${sels[@]:q:q}"
+    }
+
+    # Like f, but not recursive.
+    fm() { f "$@" --max-depth 1; }
+fi
+
+if lib::check_commands fzf git; then
+    # Checkout git branch/tag, with a preview showing the commits between the tag/branch and HEAD
+    my:git:fzf-checkout() {
+      local tags branches target
+      branches=$(
+        git --no-pager branch --all \
+          --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" \
+        | sed '/^$/d') || return
+      tags=$(
+        git --no-pager tag | awk '{print "\x1b[35;1mtag\x1b[m\t" $1}') || return
+      target=$(
+        (echo "$branches"; echo "$tags") |
+        fzf --no-hscroll --no-multi -n 2 \
+            --ansi --preview="git --no-pager log -150 --pretty=format:%s '..{2}'") || return
+      git checkout $(awk '{print $2}' <<<"$target" )
+    }
 fi
 
 # Deprecated aliases

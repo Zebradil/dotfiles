@@ -2,7 +2,7 @@
 # | Fuzzy finder            |
 # +=========================+
 
-if lib::check_commands fzf; then
+if lib::check_commands fzf fd bat exa; then
   log::debug "Configuring fzf"
 
   source /usr/share/fzf/completion.zsh

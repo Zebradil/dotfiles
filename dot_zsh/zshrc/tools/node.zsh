@@ -1,6 +1,6 @@
-# +=========================+
-# | Local npm packages      |
-# +-------------------------+
+# +===============================+
+# | Node ecosystem configurations |
+# +-------------------------------+
 
 if lib::check_commands npm; then
     log::debug "Configuring local npm packages"
