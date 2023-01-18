@@ -44,7 +44,7 @@ export TIMEFMT='%J   %U  user %S system %P cpu %*E total'$'\n'\
 
 
 
-source $HOME/zshrc/antibody.zsh
+source $HOME/zshrc/antidote.zsh
 source $HOME/zshrc/aliases-and-functions.zsh
 source $HOME/zshrc/paths.zsh
 source $HOME/zshrc/golang.zsh
