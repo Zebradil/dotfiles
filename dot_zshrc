@@ -329,3 +329,4 @@ kubectl::node-ssh-from-pod() {
         ${node_username}@${node_ip} $node_cmd;
       rm -f /id_ed25519'
 }
+
