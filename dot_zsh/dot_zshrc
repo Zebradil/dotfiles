@@ -1,8 +1,8 @@
 # vim: set filetype=zsh shiftwidth=2 softtabstop=2 expandtab:
 
-source $HOME/zshrc/lib/everything.zsh
-source $HOME/zshrc/fzf.zsh
-source $HOME/zshrc/history.zsh
+source "${ZDOTDIR:-}/zshrc/lib/everything.zsh"
+source "${ZDOTDIR:-}/zshrc/fzf.zsh"
+source "${ZDOTDIR:-}/zshrc/history.zsh"
 
 
 # +=========================+
@@ -44,13 +44,13 @@ export TIMEFMT='%J   %U  user %S system %P cpu %*E total'$'\n'\
 
 
 
-source $HOME/zshrc/antidote.zsh
-source $HOME/zshrc/aliases-and-functions.zsh
-source $HOME/zshrc/paths.zsh
-source $HOME/zshrc/golang.zsh
-source $HOME/zshrc/pyenv.zsh
-source $HOME/zshrc/npm.zsh
-source $HOME/zshrc/starship.zsh
+source "${ZDOTDIR:-}/zshrc/antidote.zsh"
+source "${ZDOTDIR:-}/zshrc/aliases-and-functions.zsh"
+source "${ZDOTDIR:-}/zshrc/paths.zsh"
+source "${ZDOTDIR:-}/zshrc/golang.zsh"
+source "${ZDOTDIR:-}/zshrc/pyenv.zsh"
+source "${ZDOTDIR:-}/zshrc/npm.zsh"
+source "${ZDOTDIR:-}/zshrc/starship.zsh"
 
 # +=========================+
 # | Library                 |
