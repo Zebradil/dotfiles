@@ -66,8 +66,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'vim-airline/vim-airline'
 
   Plug 'junegunn/vim-easy-align'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
+  Plug 'junegunn/fzf'
 
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
