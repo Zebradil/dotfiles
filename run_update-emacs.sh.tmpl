@@ -6,12 +6,12 @@ UPDATE_FREQUENCY='7 days'
 set -euo pipefail
 
 if ! command -v emacs &>/dev/null; then
-    printf " /Skip update: emacs is not installed/ " | xargs -d/ -n1 printf '\033[1;30;43m %-40s \033[0m\n'
+    printf " /Skip update: emacs is not installed/ " | xargs -d/ -n1 printf '\033[1;30;43m %-77s \033[0m\n'
     exit 0
 fi
 
 header(){
-    printf " :$1: " | xargs -d: -n1 printf '\033[1;30;42m %-40s \033[0m\n'
+    printf " :$1: " | xargs -d: -n1 printf '\033[1;30;42m %-77s \033[0m\n'
 }
 
 {{ if ne .emacs_doom_dir "no" -}}
