@@ -1,8 +1,9 @@
 #!/bin/zsh
+# vim: set ft=bash :
 
 set -euo pipefail
 
-if ! command antidote &> /dev/null
+if command antidote &> /dev/null
 then
     printf ' :Updating ZSH plugins: ' \
         | xargs -d: -n1 printf '\033[1;30;42m %-77s \033[0m\n'
