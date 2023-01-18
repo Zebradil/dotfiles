@@ -1,0 +1,332 @@
+# vim: set filetype=zsh shiftwidth=2 softtabstop=2 expandtab:
+
+source $HOME/zshrc/lib/everything.zsh
+source $HOME/zshrc/fzf.zsh
+source $HOME/zshrc/history.zsh
+
+
+# +=========================+
+# | Shell configuration     |
+# +-------------------------+
+
+setopt autocd extendedglob
+bindkey -v
+
+autoload -U edit-command-line
+zle -N edit-command-line
+
+bindkey -M vicmd v edit-command-line
+
+# The following lines were added by compinstall
+zstyle ':completion:*' completer _complete _ignored _approximate
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Za-z}' 'l:|=* r:|=*' 'r:|[._-]=* r:|=*'
+#zstyle ':completion:*' max-errors 3
+zstyle :compinstall filename '${HOME}/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+export LANG=en_US.UTF-8
+export LC_TIME=en_DK.UTF-8
+export EDITOR='nvim'
+export MANPAGER='nvim +Man!'
+
+export BAT_THEME=base16-256
+
+export TIMEFMT='%J   %U  user %S system %P cpu %*E total'$'\n'\
+'avg shared (code):         %X KB'$'\n'\
+'avg unshared (data/stack): %D KB'$'\n'\
+'total (sum):               %K KB'$'\n'\
+'max memory:                %M MB'$'\n'\
+'page faults from disk:     %F'$'\n'\
+'other page faults:         %R'
+
+
+
+source $HOME/zshrc/antidote.zsh
+source $HOME/zshrc/aliases-and-functions.zsh
+source $HOME/zshrc/paths.zsh
+source $HOME/zshrc/golang.zsh
+source $HOME/zshrc/pyenv.zsh
+source $HOME/zshrc/npm.zsh
+source $HOME/zshrc/starship.zsh
+
+# +=========================+
+# | Library                 |
+# +-------------------------+
+
+# Use fd and fzf to get the args to a command.
+# Works only with zsh
+# Examples:
+# f mv # To move files. You can write the destination after selecting the files.
+# f 'echo Selected:'
+# f 'echo Selected music:' --extention mp3
+# fm rm # To rm files in current directory
+f() {
+    sels=( "${(@f)$(fd "${fd_default[@]}" "${@:2}"| fzf)}" )
+    test -n "$sels" && print -z -- "$1 ${sels[@]:q:q}"
+}
+
+# Like f, but not recursive.
+fm() { f "$@" --max-depth 1; }
+
+# fco_preview - checkout git branch/tag, with a preview showing the commits between the tag/branch and HEAD
+fco_preview() {
+  local tags branches target
+  branches=$(
+    git --no-pager branch --all \
+      --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" \
+    | sed '/^$/d') || return
+  tags=$(
+    git --no-pager tag | awk '{print "\x1b[35;1mtag\x1b[m\t" $1}') || return
+  target=$(
+    (echo "$branches"; echo "$tags") |
+    fzf --no-hscroll --no-multi -n 2 \
+        --ansi --preview="git --no-pager log -150 --pretty=format:%s '..{2}'") || return
+  git checkout $(awk '{print $2}' <<<"$target" )
+}
+
+update_spacemacs_packages() {
+    emacs --batch -l ~/.emacs.d/init.el --eval="(configuration-layer/update-packages t)"
+}
+
+set_kubeconfig_var() {
+    export KUBECONFIG="$(echo ~/.kube/*clusters/*.y?ml(N) | tr ' ' ':')"
+}
+
+osacme() {
+  env $(\
+      yq eval --output-format props \
+      '.clouds[env(OS_CLOUD)] | explode(.) | (with_entries(select(.key != "auth")), .auth)' \
+      ~/.config/openstack/clouds.yaml \
+      | sed -r 's/^(\w+) = (.*)/\UOS_\1\E=\2/' \
+      | xargs -d '\n') \
+    acme.sh --issue --dns dns_openstack --domain "${@}"
+}
+
+# +=========================+
+# | Autocompletion          |
+# +-------------------------+
+
+if [ $commands[stern] ]; then source <(stern --completion zsh); fi
+
+if [ $commands[hcloud] ]; then source <(hcloud completion zsh); fi
+
+if [ $commands[kubectl] ]; then source <(kubectl completion zsh | sed '/"-f"/d'); fi
+
+if [[ -f ~/.config/tabtab/__tabtab.zsh ]]; then source ~/.config/tabtab/__tabtab.zsh; fi
+
+
+# +=========================+
+# | Gnome keyring           |
+# +-------------------------+
+
+if [ $commands[gnome-keyring-daemon] ];
+then
+    eval $(gnome-keyring-daemon --start)
+    export GNOME_KEYRING_CONTROL
+    export SSH_AUTH_SOCK
+fi
+
+
+
+GPG_TTY=$(tty)
+export GPG_TTY
+
+
+# +=========================+
+# | Command line hooks      |
+# +-------------------------+
+
+if [ $commands[zoxide] ]; then
+    eval "$(zoxide init zsh)"
+    export _ZO_FZF_OPTS='+s --preview "exa -l --group-directories-first -T -L5 --color=always --color-scale {2..} | head -200"'
+elif [ $commands[fasd] ]; then eval "$(fasd --init auto)"
+# Z and custom FZF wrapper around it
+elif [[ -r "/usr/share/z/z.sh" ]]; then
+    source /usr/share/z/z.sh
+
+    unalias z
+
+    z() {
+      if [[ -z "$*" ]]; then
+        cd "$(_z -l 2>&1 | sed 's/^[0-9,.]* *//' | fzf +s --tac --preview ${FZF_DIRECTORY_PREVIEW_CMD})"
+      else
+        _last_z_args="$@"
+        _z "$@"
+      fi
+    }
+
+    zz() {
+      cd "$(_z -l 2>&1 | sed 's/^[0-9,.]* *//' | fzf -q "$_last_z_args")"
+    }
+fi
+
+if [ $commands[direnv] ]; then eval "$(direnv hook zsh)"; fi
+
+if [ $commands[thefuck] ]; then eval "$(thefuck --alias)"; fi
+
+# +=========================+
+# | Various adjustments     |
+# +-------------------------+
+
+# Use Docker buildkit by default
+export DOCKER_BUILDKIT=1
+export COMPOSE_DOCKER_CLI_BUILD=1
+
+
+if [ $commands[go-task] ]; then
+    export GOTASK_BIN=go-task
+    alias gt=go-task
+fi
+
+
+# +=========================+
+# | Local overrides         |
+# +-------------------------+
+
+[[ -r "$HOME/.zshrc.local" ]] && . $HOME/.zshrc.local || true
+
+# pnpm
+export PNPM_HOME="/home/zebradil/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
+# +=========================+
+# | Inbox functions         |
+# +-------------------------+
+
+kubectl::chroot-node() (
+# Copyright (c) 2019 Gonçalo Baltazar <me@goncalomb.com>
+# MIT License
+
+# Open a root shell on a Kubernetes cluster Node (no ssh).
+
+# It uses a privileged container to unlock Linux capabilities and chroot to
+# change into the root filesystem of the Node for full access.
+
+# The Node is selected using the 'kubernetes.io/hostname' label.
+
+local NODE_HOSTNAME="${1:?Usage: $0 NODE_HOSTNAME}"
+
+kubectl run "node-gate-"$NODE_HOSTNAME -it --rm --restart=Never --attach --image=busybox --overrides '
+{
+	"spec": {
+		"nodeSelector": {
+			"kubernetes.io/hostname": "'$NODE_HOSTNAME'"
+		},
+		"hostPID": true,
+		"hostIPC": true,
+		"hostNetwork": true,
+		"containers": [
+			{
+				"name": "node-gate",
+				"image": "busybox",
+				"stdin": true,
+				"tty": true,
+				"command": [
+					"chroot", "/mnt/host"
+				],
+				"securityContext": {
+					"privileged": true
+				},
+				"volumeMounts": [
+					{
+						"name": "host",
+						"mountPath": "/mnt/host"
+					}
+				]
+			}
+		],
+		"tolerations": [
+			{
+				"effect": "NoSchedule",
+				"operator": "Exists"
+			}
+		],
+		"volumes": [
+			{
+				"name": "host",
+				"hostPath": {
+					"path": "/"
+				}
+			}
+		]
+	}
+}
+'
+)
+
+kubectl::node-ssh-from-pod() {
+  local ctx ns
+  local ssh_key
+  local node_username
+
+  zparseopts -D -K -E \
+    -context:=ctx \
+    n:=ns -namespace:=ns \
+    i:=ssh_key -identity:=ssh_key \
+    l:=node_username -login:=node_username -username:=node_username
+
+  ns=${ns[2]:-$(kubectl::current-namespace)}
+  ctx=${ctx[2]:-$(kubectl::current-context)}
+  ssh_key=${ssh_key[2]:-${HOME}/.ssh/id_ed25519}
+  node_username=${node_username[2]:-core}
+
+  local node="$1" node_ip
+  node_ip=$(kubectl --context "$ctx" get node "$node" -o json | \
+    jq -er '.metadata.annotations["alpha.kubernetes.io/provided-node-ip"]')
+  shift
+  local node_cmd="$*"
+
+  if [[ -z "$node_ip" ]]
+  then
+    echo_error "Failed to determine node IP of $node"
+    return 1
+  fi
+
+  local pod="ssh-node-${USER}-$(date '+%s')"
+  echo_info "Starting pod $pod in $ns (ctx: $ctx)"
+  # echo_info "Transfer your key: kubectl --context $ctx cp ${ssh_key} ${pod}:id_ed25519"
+
+  trap "kubectl --context "$ctx" delete pod -n $ns $pod --wait=false >&2" EXIT
+
+  setopt localoptions nonotify nomonitor
+  {
+    sleep 2  # FIXME is this even necessary?
+    if kubectl --context "$ctx" --namespace "$ns" wait --for=condition=ready --timeout=5m pod "$pod" >&2
+    then
+      echo_warning "Transfering your PRIVATE KEY (${ssh_key}) to the pod"
+      kubectl --context "$ctx" --namespace "$ns" cp "${ssh_key}" "${pod}:id_ed25519"
+    fi
+  } &
+
+  kubectl --context "$ctx" \
+    run "$pod" --rm --restart=Never \
+    --quiet \
+    --namespace "$ns" \
+    --stdin=true --tty=true \
+    --force=true --grace-period=1 \
+    --labels="owner=${USER},purpose=debug,app=node-ssh-via-pod" \
+    --env "node_username=${node_username}" \
+    --env "node_ip=${node_ip}" \
+    --env "node_cmd=${node_cmd}" \
+    --image pschmitt/debug \
+    -- \
+    -c '
+      trap "rm -f /id_ed25519" EXIT;
+      while [[ ! -r /id_ed25519 ]]
+      do
+        echo "Waiting for ssh key to magically appear..." >&2
+        sleep 1
+      done
+
+      chmod 400 /id_ed25519 && \
+        ssh -i /id_ed25519 \
+          -o UserKnownHostsFile=/dev/null \
+          -o StrictHostKeyChecking=no \
+        ${node_username}@${node_ip} $node_cmd;
+      rm -f /id_ed25519'
+}
+
