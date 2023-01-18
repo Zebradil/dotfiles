@@ -1,14 +1,17 @@
 #!/bin/zsh
-# vim: set ft=bash :
+# vim: set ft=zsh :
 
 set -euo pipefail
 
-if command antidote &> /dev/null
+antidote_source="/usr/share/zsh-antidote/antidote.zsh"
+[[ -f "${antidote_source}" ]] && source "${antidote_source}"
+
+if command -v antidote &> /dev/null
 then
     printf ' :Updating ZSH plugins: ' \
         | xargs -d: -n1 printf '\033[1;30;42m %-77s \033[0m\n'
     antidote update
 else
-    printf ' :Skip update: antidote is not installed: ' \
+    printf ' : Antidote is not installed -> skipping update: ' \
         | xargs -d: -n1 printf '\033[1;30;43m %-77s \033[0m\n'
 fi
