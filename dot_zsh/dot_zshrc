@@ -66,6 +66,11 @@ export GPG_TTY
 
 foreach f ("${ZDOTDIR:-}/zshrc/tools/"*.zsh(N.)) { source "$f" }
 
+bindkey -M vicmd '^[[A' history-beginning-search-backward
+bindkey -M vicmd '^[[B' history-beginning-search-forward
+bindkey -M vicmd '^R' history-search-multi-word
+bindkey -M vicmd '^S' fzf-history-widget
+
 source "${ZDOTDIR:-}/zshrc/aliases-and-functions.zsh"
 
 # +=========================+
