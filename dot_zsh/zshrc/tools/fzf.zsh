@@ -8,6 +8,10 @@ if lib::check_commands fzf fd bat exa; then
   source /usr/share/fzf/completion.zsh
   source /usr/share/fzf/key-bindings.zsh
 
+  bindkey -M emacs '^S' fzf-history-widget
+  bindkey -M vicmd '^S' fzf-history-widget
+  bindkey -M viins '^S' fzf-history-widget
+
   export FZF_DEFAULT_OPTS='--multi --no-height --extended'
   export FZF_DEFAULT_COMMAND='fd --no-ignore --hidden --exclude ".git" --exclude "~/go"'
   export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
