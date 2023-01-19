@@ -66,10 +66,14 @@ export GPG_TTY
 
 foreach f ("${ZDOTDIR:-}/zshrc/tools/"*.zsh(N.)) { source "$f" }
 
-bindkey -v '^[[A' history-beginning-search-backward
-bindkey -v '^[[B' history-beginning-search-forward
-bindkey -v '^R' history-search-multi-word
-bindkey -v '^S' fzf-history-widget
+bindkey -M viins '^[[A' history-beginning-search-backward
+bindkey -M vicmd '^[[A' history-beginning-search-backward
+bindkey -M viins '^[[B' history-beginning-search-forward
+bindkey -M vicmd '^[[B' history-beginning-search-forward
+bindkey -M viins '^R' history-search-multi-word
+bindkey -M vicmd '^R' history-search-multi-word
+bindkey -M viins '^S' fzf-history-widget
+bindkey -M vicmd '^S' fzf-history-widget
 
 source "${ZDOTDIR:-}/zshrc/aliases-and-functions.zsh"
 
