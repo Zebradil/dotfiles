@@ -23,6 +23,8 @@ antidote_source=/usr/share/zsh-antidote/antidote.zsh
 if [[ ! -f $antidote_source ]]; then
     log::info "Antidote plugin manager not found. Please install it."
 else
+    log::info "Configuring Antidote"
+
     source "$antidote_source"
 
     plugins_txt=${ZDOTDIR:-~}/.zsh_plugins.txt
@@ -33,6 +35,7 @@ else
         antidote bundle <<<"$antidote_plugins" >"$static_file"
     fi
 
+    log::debug "Sourcing antidote plugins from $static_file"
     source "$static_file"
 
     unset plugins_txt static_file
