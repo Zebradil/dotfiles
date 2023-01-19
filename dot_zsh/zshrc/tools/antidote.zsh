@@ -36,6 +36,8 @@ else
     fi
 
     log::debug "Sourcing antidote plugins from $static_file"
+    # ZSH-VI-MODE: Do the initialization when the script is sourced (i.e. Initialize instantly)
+    ZVM_INIT_MODE=sourcing
     source "$static_file"
 
     unset plugins_txt static_file

@@ -64,9 +64,9 @@ fi
 GPG_TTY=$(tty)
 export GPG_TTY
 
-
-
 foreach f ("${ZDOTDIR:-}/zshrc/tools/"*.zsh(N.)) { source "$f" }
+
+source "${ZDOTDIR:-}/zshrc/aliases-and-functions.zsh"
 
 # +=========================+
 # | Local overrides         |

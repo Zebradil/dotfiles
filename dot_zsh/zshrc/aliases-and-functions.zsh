@@ -2,6 +2,8 @@
 # | Aliases and functions   |
 # +-------------------------+
 
+log::info "Loading aliases and functions"
+
 insist() {
     local delay=1
     local cmd
