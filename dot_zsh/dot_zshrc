@@ -66,7 +66,7 @@ export GPG_TTY
 
 
 
-foreach f ("${ZDOTDIR:-}/zshrc/tools/"*.zsh(N.)) source "$f"
+foreach f ("${ZDOTDIR:-}/zshrc/tools/"*.zsh(N.)) { source "$f" }
 
 # +=========================+
 # | Local overrides         |
