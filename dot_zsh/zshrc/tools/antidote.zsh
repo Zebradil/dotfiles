@@ -23,7 +23,9 @@ antidote_source=/usr/share/zsh-antidote/antidote.zsh
 if [[ ! -f $antidote_source ]]; then
     log::info "Antidote plugin manager not found. Please install it."
 else
-    log::info "Configuring Antidote"
+    # This branch is executed every time the shell is started.
+    # That's why debug level is used.
+    log::debug "Configuring Antidote"
 
     source "$antidote_source"
 

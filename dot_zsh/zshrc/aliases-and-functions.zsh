@@ -2,7 +2,7 @@
 # | Aliases and functions   |
 # +-------------------------+
 
-log::info "Loading aliases and functions"
+log::debug "Loading aliases and functions"
 
 insist() {
     local delay=1
