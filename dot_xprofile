@@ -1,0 +1,7 @@
+for i in $(xinput list | grep "touchpad" | perl -n -e'/id=(\d+)/ && print "$1\n"')
+do
+    Option "ClickMethod" "clickfinger"
+    xinput set-prop $i "libinput Tapping Enabled" 1
+    xinput set-prop $i "libinput Click Method Enabled" 1 0
+    xinput set-prop $i "libinput Natural Scrolling Enabled" 1
+done
