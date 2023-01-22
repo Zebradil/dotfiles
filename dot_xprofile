@@ -1,6 +1,5 @@
-for i in $(xinput list | grep "touchpad" | perl -n -e'/id=(\d+)/ && print "$1\n"')
+for i in $(xinput list | sed -nr '/touchpad/I s/.*id=([0-9]+).*/\1/p')
 do
-    Option "ClickMethod" "clickfinger"
     xinput set-prop $i "libinput Tapping Enabled" 1
     xinput set-prop $i "libinput Click Method Enabled" 1 0
     xinput set-prop $i "libinput Natural Scrolling Enabled" 1
