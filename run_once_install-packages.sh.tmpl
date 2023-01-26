@@ -7,6 +7,10 @@ header(){
     printf " :%s: " "$1" | xargs -d: -n1 printf '\033[1;30;42m %-77s \033[0m\n'
 }
 
+my:yay(){
+    yay -S --needed --answerclean N --answerdiff N "$@"
+}
+
 header "Installing base packages"
 
 sudo pacman -S --needed git base-devel
@@ -25,7 +29,7 @@ fi
 {{ if .package_mode -}}
 header "Installing optional headless packages"
 
-yay -S --needed --answerclean N --answerdiff N \
+my:yay \
     aspell \
     aspell-de \
     aspell-en \
@@ -63,7 +67,7 @@ yay -S --needed --answerclean N --answerdiff N \
 {{ if or (eq .package_mode "desktop-mini") (eq .package_mode "desktop-full") -}}
 header "Installing optional minimal desktop packages"
 
-yay -S --needed --answerclean N --answerdiff N \
+my:yay \
     alacritty \
     awesome-terminal-fonts \
     blueberry \
@@ -89,7 +93,7 @@ yay -S --needed --answerclean N --answerdiff N \
 {{ if eq .package_mode "desktop-full" -}}
 header "Installing optional desktop-lite packages"
 
-yay -S --needed --answerclean N --answerdiff N \
+my:yay \
     feh \
     firefox \
     gnome-keyring \
@@ -115,8 +119,9 @@ yay -S --needed --answerclean N --answerdiff N \
 {{ if .battery -}}
 header "Installing optional packages for battery powered devices"
 
-yay -S --needed --answerclean N --answerdiff N \
+my:yay \
     light \
+    mate-power-manager \
     powertop \
     tlp \
     tlp-rdw
