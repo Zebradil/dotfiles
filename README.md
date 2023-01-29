@@ -26,6 +26,27 @@ but some parts of the configuration require changes outside of the home director
 This can be solved with [scripts](https://www.chezmoi.io/user-guide/use-scripts-to-perform-actions/),
 but until it is implemented, follow the instructions in this section.
 
+### LightDM wallpaper
+
+This configuration bundle uses lightdm and lightdm-slick-greeter. Use `lightdm-settings` for configuration and setting
+wallpaper. There should be a way to set wallpaper on per-user basis via AccountsService and dbus (in this case "Draw
+user backgrounds" can be set to `true`). But I haven't looked into this yet.
+
+Instead, variety [is configured](https://github.com/Zebradil/dotfiles/blob/380fcaa817738056ce83cc7beb730de08663348c/src/private_dot_config/variety/scripts/executable_set_wallpaper#L289-L291)
+to copy selected wallpaper to `/usr/local/share/backgrounds/wallpaper.jpg`. The file and the directory should be
+writeable for the current user and readable for the lightdm user. Additionally, lightdm should be configured to use this
+file as a wallpaper (refer to `lightdm-settings` or reuse [`slick-greeter.conf`](./snippets/slick-greeter.conf)).
+
+```shell
+# Create a directory for wallpapers.
+# Set appropriate permissions and ownership.
+# Here `users` group have write access, everyone can read.
+
+WP_DIR=/usr/local/share/backgrounds
+sudo mkdir --parents --mode=775 "$WP_DIR"
+sudo chown :users "$WP_DIR"
+```
+
 ### PAM U2F (using smart cards)
 
 A smart card, like YubiKey can be used to perform 2FA in addition to password authentication or to perform passwordless
