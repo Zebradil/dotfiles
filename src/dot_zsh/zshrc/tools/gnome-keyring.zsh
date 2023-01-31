@@ -2,15 +2,17 @@
 # | Gnome keyring           |
 # +-------------------------+
 
+set -x
 if lib::check_commands gnome-keyring-daemon; then
   log::debug "Configuring gnome-keyring environment"
 
-  if ! pgrep -f gnome-keyring-daemon >/dev/null; then
+  if pgrep -f gnome-keyring-daemon >/dev/null; then
     eval "$(gnome-keyring-daemon --start)"
     export GNOME_KEYRING_CONTROL
     export SSH_AUTH_SOCK
   fi
 fi
+set +x
 
 if lib::check_commands systemd-ask-password; then
   log::debug "Configuring gnome-keyring functions"
