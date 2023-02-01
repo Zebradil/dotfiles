@@ -39,6 +39,9 @@ symbol = " "
 [elm]
 symbol = " "
 
+[gcloud]
+format = 'on [$symbol$account(@$domain)(\($project\))]($style) '
+
 [git_branch]
 symbol = " "
 
