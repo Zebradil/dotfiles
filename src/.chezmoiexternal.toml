@@ -9,11 +9,15 @@
 # refreshPeriod = "168h"
 
 [".config/alacritty/colors/base16"]
-type = "git-repo"
-url = "https://github.com/aarowill/base16-alacritty"
+type = "archive"
+url = "https://github.com/aarowill/base16-alacritty/archive/refs/heads/master.zip"
+include = ['*/colors/*']
+stripComponents = 2
 refreshPeriod = "168h"
 
 [".config/alacritty/colors/misc"]
-type = "git-repo"
-url = "https://github.com/alacritty/alacritty-theme"
+type = "archive"
+url = "https://github.com/alacritty/alacritty-theme/archive/refs/heads/master.zip"
+include = ['*/themes/*']
+stripComponents = 2
 refreshPeriod = "168h"
