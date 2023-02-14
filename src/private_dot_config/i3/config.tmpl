@@ -63,7 +63,6 @@ exec_always {{ template "ergodox" }}
 # autostart
 # exec --no-startup-id redshift -l geoclue2 -t 6500K:3500K
 # exec --no-startup-id udiskie --no-automount --no-notify --tray
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id dex -ae i3
 exec --no-startup-id workrave
 exec_always --no-startup-id xkb-switch --i3
@@ -366,7 +365,7 @@ mode $mode_gaps {
 }
 
 bar {
-    status_command ~/.config/polybar/launch.sh
+    i3bar_command "$HOME/.config/polybar/launch.sh"
 }
 
 
