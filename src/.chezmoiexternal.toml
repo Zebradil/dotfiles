@@ -1,11 +1,13 @@
 [".config/nvim-profiles/chad/nvim"]
 type = "archive"
 url = "https://github.com/NvChad/NvChad/archive/refs/heads/main.zip"
+stripComponents = 1
 refreshPeriod = "168h"
 
 [".config/nvim-profiles/astro/nvim"]
 type = "archive"
 url = "https://github.com/AstroNvim/AstroNvim/archive/refs/heads/main.zip"
+stripComponents = 1
 refreshPeriod = "168h"
 
 [".config/alacritty/colors/base16"]
