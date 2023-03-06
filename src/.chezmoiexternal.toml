@@ -1,12 +1,12 @@
-# [".config/nvim-profiles/chad/nvim"]
-# type = "git-repo"
-# url = "https://github.com/NvChad/NvChad"
-# refreshPeriod = "168h"
-#
-# [".config/nvim-profiles/astro/nvim"]
-# type = "git-repo"
-# url = "https://github.com/AstroNvim/AstroNvim"
-# refreshPeriod = "168h"
+[".config/nvim-profiles/chad/nvim"]
+type = "archive"
+url = "https://github.com/NvChad/NvChad/archive/refs/heads/main.zip"
+refreshPeriod = "168h"
+
+[".config/nvim-profiles/astro/nvim"]
+type = "archive"
+url = "https://github.com/AstroNvim/AstroNvim/archive/refs/heads/main.zip"
+refreshPeriod = "168h"
 
 [".config/alacritty/colors/base16"]
 type = "archive"
