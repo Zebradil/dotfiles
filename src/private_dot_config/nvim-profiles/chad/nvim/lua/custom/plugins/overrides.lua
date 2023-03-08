@@ -22,6 +22,7 @@ M.treesitter = {
     "bash",
     "css",
     "html",
+    "http",
     "javascript",
     "lua",
     "vim",

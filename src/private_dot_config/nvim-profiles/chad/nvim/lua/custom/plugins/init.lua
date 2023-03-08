@@ -53,7 +53,7 @@ local plugins = {
 
   ["zbirenbaum/copilot.lua"] = {
     config = function()
-      require("copilot").setup {
+      require("copilot").setup({
         suggestion = { enabled = false },
         panel = { enabled = false },
         filetypes = {
@@ -61,7 +61,7 @@ local plugins = {
           markdown = true,
           yaml = true,
         },
-      }
+      })
     end,
   },
   ["zbirenbaum/copilot-cmp"] = {
@@ -70,6 +70,8 @@ local plugins = {
       require("copilot_cmp").setup()
     end,
   },
+
+  ["tpope/vim-surround"] = {},
 
   -- remove plugin
   -- ["hrsh7th/cmp-path"] = false,
