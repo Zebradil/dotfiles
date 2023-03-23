@@ -24,6 +24,7 @@ M.treesitter = {
     "html",
     "http",
     "javascript",
+    "json5",
     "lua",
     "vim",
     "yaml",
