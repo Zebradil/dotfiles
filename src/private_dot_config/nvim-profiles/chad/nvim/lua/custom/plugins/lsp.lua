@@ -4,10 +4,11 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 local servers = {
-  "html",
-  "cssls",
-  "tsserver",
   "clangd",
+  "cssls",
+  "html",
+  "terraform-ls",
+  "tsserver",
 }
 
 for _, lsp in ipairs(servers) do
