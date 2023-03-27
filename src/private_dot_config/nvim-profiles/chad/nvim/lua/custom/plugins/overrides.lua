@@ -48,6 +48,8 @@ M.mason = {
     -- Shell
     "shfmt",
     "shellcheck",
+
+    "terraform-ls",
   },
 }
 
