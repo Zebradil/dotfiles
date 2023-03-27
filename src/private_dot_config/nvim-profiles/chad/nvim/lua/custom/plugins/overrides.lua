@@ -26,6 +26,7 @@ M.treesitter = {
     "javascript",
     "json5",
     "lua",
+    "terraform",
     "vim",
     "yaml",
   },
