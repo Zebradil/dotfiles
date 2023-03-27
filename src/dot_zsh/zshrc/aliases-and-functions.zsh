@@ -99,7 +99,7 @@ fi
 
 if lib::check_commands alacritty-colorscheme fzf exa bat; then
     function chct() (
-        local alclr=(alacritty-colorscheme --base16_vim --config_file "$HOME/.config/alacritty/colors.yml")
+        local alclr=alacritty-colorscheme
         $alclr list |
             fzf "$@" --preview "
               $alclr apply {}
