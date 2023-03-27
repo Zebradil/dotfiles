@@ -7,7 +7,7 @@ local servers = {
   "clangd",
   "cssls",
   "html",
-  "terraform",
+  "terraformls",
   "tsserver",
 }
 
