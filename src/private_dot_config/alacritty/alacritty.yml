@@ -883,47 +883,47 @@ font:
   # Highlight window damage information.
   #highlight_damage: false
 colors:
-  # COLORSCHEME: base16/base16-ayu-light-256.yml
+  # COLORSCHEME: base16/base16-ayu-dark-256.yml
   # Default colors
   primary:
     # hard contrast: background = '0xf9f5d7'
-    background: '0xfafafa'
-    foreground: '0x5c6773'
+    background: '0x0f1419'
+    foreground: '0xe6e1cf'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0xfafafa'
-    cursor: '0x5c6773'
+    text: '0x0f1419'
+    cursor: '0xe6e1cf'
 
   # Normal colors
   normal:
-    black: '0xfafafa'
+    black: '0x0f1419'
     red: '0xf07178'
-    green: '0x86b300'
-    yellow: '0xf2ae49'
-    blue: '0x36a3d9'
-    magenta: '0xa37acc'
-    cyan: '0x4cbf99'
-    white: '0x5c6773'
+    green: '0xb8cc52'
+    yellow: '0xffb454'
+    blue: '0x59c2ff'
+    magenta: '0xd2a6ff'
+    cyan: '0x95e6cb'
+    white: '0xe6e1cf'
 
   # Bright colors
   bright:
-    black: '0xabb0b6'
+    black: '0x3e4b59'
     red: '0xf07178'
-    green: '0x86b300'
-    yellow: '0xf2ae49'
-    blue: '0x36a3d9'
-    magenta: '0xa37acc'
-    cyan: '0x4cbf99'
-    white: '0x1a1f29'
+    green: '0xb8cc52'
+    yellow: '0xffb454'
+    blue: '0x59c2ff'
+    magenta: '0xd2a6ff'
+    cyan: '0x95e6cb'
+    white: '0xf3f4f5'
 
   indexed_colors:
-    - {index: 16, color: '0xfa8d3e'}
-    - {index: 17, color: '0xe6ba7e'}
-    - {index: 18, color: '0xf3f4f5'}
-    - {index: 19, color: '0xf8f9fa'}
-    - {index: 20, color: '0x828c99'}
-    - {index: 21, color: '0x242936'}
+    - {index: 16, color: '0xff8f40'}
+    - {index: 17, color: '0xe6b673'}
+    - {index: 18, color: '0x131721'}
+    - {index: 19, color: '0x272d38'}
+    - {index: 20, color: '0xbfbdb6'}
+    - {index: 21, color: '0xe6e1cf'}
   selection:
     background: '#f2f2f2'
     text: '#403f53'

@@ -1,41 +1,41 @@
 colors:
-  # COLORSCHEME: base16/base16-classic-light-256.yml
+  # COLORSCHEME: base16/base16-ayu-dark-256.yml
   # Default colors
   primary:
-    background: '0xf5f5f5'
-    foreground: '0x303030'
+    background: '0x0f1419'
+    foreground: '0xe6e1cf'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0xf5f5f5'
-    cursor: '0x303030'
+    text: '0x0f1419'
+    cursor: '0xe6e1cf'
 
   # Normal colors
   normal:
-    black: '0xf5f5f5'
-    red: '0xac4142'
-    green: '0x90a959'
-    yellow: '0xf4bf75'
-    blue: '0x6a9fb5'
-    magenta: '0xaa759f'
-    cyan: '0x75b5aa'
-    white: '0x303030'
+    black: '0x0f1419'
+    red: '0xf07178'
+    green: '0xb8cc52'
+    yellow: '0xffb454'
+    blue: '0x59c2ff'
+    magenta: '0xd2a6ff'
+    cyan: '0x95e6cb'
+    white: '0xe6e1cf'
 
   # Bright colors
   bright:
-    black: '0xb0b0b0'
-    red: '0xac4142'
-    green: '0x90a959'
-    yellow: '0xf4bf75'
-    blue: '0x6a9fb5'
-    magenta: '0xaa759f'
-    cyan: '0x75b5aa'
-    white: '0x151515'
+    black: '0x3e4b59'
+    red: '0xf07178'
+    green: '0xb8cc52'
+    yellow: '0xffb454'
+    blue: '0x59c2ff'
+    magenta: '0xd2a6ff'
+    cyan: '0x95e6cb'
+    white: '0xf3f4f5'
 
   indexed_colors:
-    - {index: 16, color: '0xd28445'}
-    - {index: 17, color: '0x8f5536'}
-    - {index: 18, color: '0xe0e0e0'}
-    - {index: 19, color: '0xd0d0d0'}
-    - {index: 20, color: '0x505050'}
-    - {index: 21, color: '0x202020'}
+    - {index: 16, color: '0xff8f40'}
+    - {index: 17, color: '0xe6b673'}
+    - {index: 18, color: '0x131721'}
+    - {index: 19, color: '0x272d38'}
+    - {index: 20, color: '0xbfbdb6'}
+    - {index: 21, color: '0xe6e1cf'}
