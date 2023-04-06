@@ -1,12 +1,16 @@
 #!/bin/bash
 # vim: set ft=bash :
 
+# Disable for now.
+# There are currently multiple distributions of nvim, they are updated differently.
+exit 0
+
 UPDATE_FREQUENCY='7 days'
 
 set -euo pipefail
 
 if ! command -v nvim &>/dev/null; then
-    printf " /Skip update: emacs is not installed/ " | xargs -d/ -n1 printf '\033[1;30;43m %-77s \033[0m\n'
+    printf " /Skip update: nvim is not installed/ " | xargs -d/ -n1 printf '\033[1;30;43m %-77s \033[0m\n'
     exit 0
 fi
 
