@@ -9,6 +9,7 @@ local servers = {
   "html",
   "terraformls",
   "tsserver",
+  "csharp_ls",
 }
 
 for _, lsp in ipairs(servers) do
