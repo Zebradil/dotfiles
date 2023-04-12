@@ -44,6 +44,19 @@ else
     source "$static_file"
 
     unset plugins_txt static_file
+
+    # ZSH-NOTIFY
+    {
+        if ! lib::check_commands notify-send xdotool wmctrl; then
+            log::warn "notify-send, xdotool and wmctrl are required for marzocchi/zsh-notify to work."
+        fi
+
+        zstyle ':notify:*' error-title "💔 Command failed in #{time_elapsed}"
+        zstyle ':notify:*' success-title "🏁 Command finished in #{time_elapsed}"
+        zstyle ':notify:*' command-complete-timeout 5
+        zstyle ':notify:*' expire-time 3000
+    }
+
 fi
 
 unset antidote_plugins antidote_source
