@@ -6,8 +6,10 @@ return {
     -- overrides `require("mason-lspconfig").setup(...)`
     opts = {
       ensure_installed = {
-        "lua_ls",
         "bashls",
+        "lua_ls",
+        "terraformls",
+        "tflint",
       },
     },
   },
@@ -17,9 +19,9 @@ return {
     -- overrides `require("mason-null-ls").setup(...)`
     opts = {
       ensure_installed = {
+        "beautysh",
         "prettier",
         "stylua",
-        "beautysh",
       },
     },
   },
