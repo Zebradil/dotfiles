@@ -7,6 +7,7 @@ return {
     opts = {
       ensure_installed = {
         "bashls",
+        "gopls",
         "lua_ls",
         "terraformls",
         "tflint",
@@ -20,8 +21,12 @@ return {
     opts = {
       ensure_installed = {
         "beautysh",
+        "gofumpt",
+        "goimports-reviser",
+        "golangci-lint",
         "prettier",
         "stylua",
+        "yamllint",
       },
     },
   },
