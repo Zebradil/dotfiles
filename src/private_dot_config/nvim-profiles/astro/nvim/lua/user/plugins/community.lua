@@ -5,13 +5,13 @@ return {
     -- available plugins can be found at https://github.com/AstroNvim/astrocommunity
 
     { import = "astrocommunity.colorscheme.catppuccin" },
-    { import = "astrocommunity.colorscheme.dracula" },
-    { import = "astrocommunity.colorscheme.kanagawa" },
-    { import = "astrocommunity.colorscheme.nightfox" },
-    { import = "astrocommunity.colorscheme.tokyonight" },
+    { import = "astrocommunity.colorscheme.dracula-nvim" },
+    { import = "astrocommunity.colorscheme.kanagawa-nvim" },
+    { import = "astrocommunity.colorscheme.nightfox-nvim" },
+    { import = "astrocommunity.colorscheme.tokyonight-nvim" },
     { import = "astrocommunity.completion.copilot-lua-cmp" },
     {
-    -- further customize the options set by the community
+        -- further customize the options set by the community
         "copilot.lua",
         opts = {
             filetypes = {
