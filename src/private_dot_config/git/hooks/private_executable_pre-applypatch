@@ -1,0 +1,4 @@
+#!/bin/sh
+if [ -x ./.git/hooks/pre-applypatch ]; then
+    ./.git/hooks/pre-applypatch "$@"
+fi

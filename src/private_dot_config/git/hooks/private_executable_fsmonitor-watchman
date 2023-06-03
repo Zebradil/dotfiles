@@ -1,0 +1,4 @@
+#!/bin/sh
+if [ -x ./.git/hooks/fsmonitor-watchman ]; then
+    ./.git/hooks/fsmonitor-watchman "$@"
+fi

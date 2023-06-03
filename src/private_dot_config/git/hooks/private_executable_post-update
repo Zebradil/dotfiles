@@ -1,0 +1,4 @@
+#!/bin/sh
+if [ -x ./.git/hooks/post-update ]; then
+    ./.git/hooks/post-update "$@"
+fi

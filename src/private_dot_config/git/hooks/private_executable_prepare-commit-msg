@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ -x ./.git/hooks/prepare-commit-msg ]; then
+    ./.git/hooks/prepare-commit-msg "$@"
+elif command -v cz >/dev/null 2>&1; then
+    exec < /dev/tty && cz --hook || true
+fi

@@ -1,0 +1,4 @@
+#!/bin/sh
+if [ -x ./.git/hooks/pre-merge-commit ]; then
+    ./.git/hooks/pre-merge-commit "$@"
+fi

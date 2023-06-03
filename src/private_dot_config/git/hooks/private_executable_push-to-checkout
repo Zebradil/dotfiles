@@ -1,0 +1,4 @@
+#!/bin/sh
+if [ -x ./.git/hooks/push-to-checkout ]; then
+    ./.git/hooks/push-to-checkout "$@"
+fi

@@ -1,0 +1,4 @@
+#!/bin/sh
+if [ -x ./.git/hooks/pre-receive ]; then
+    ./.git/hooks/pre-receive "$@"
+fi
