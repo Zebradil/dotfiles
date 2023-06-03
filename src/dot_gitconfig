@@ -9,7 +9,8 @@
 [core]
     autocrlf = input
     pager = delta
-    excludesfile = /home/zebradil/.gitignore_global
+    excludesfile = ~/.gitignore_global
+	; hooksPath = ~/.config/git/hooks
 [interactive]
     diffFilter = delta --color-only
 [delta]
