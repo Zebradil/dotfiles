@@ -30,6 +30,8 @@
 [difftool]
     # Be able to abort all diffs with `:cq` or `:cquit`
     trustExitCode = true
+[difftool "astro"]
+    cmd = nv astro -d $LOCAL $REMOTE
 [alias]
     lg = !"git lg1"
     lg1 = !"git lg1-specific --all"

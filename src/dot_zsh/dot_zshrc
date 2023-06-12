@@ -33,8 +33,8 @@ compinit
 
 export LANG=en_US.UTF-8
 export LC_TIME=en_DK.UTF-8
-export EDITOR='nv astro'
-export MANPAGER='nv astro +Man!'
+export EDITOR='nv chad'
+export MANPAGER='nvim +Man!'
 
 export BAT_THEME=base16-256
 
