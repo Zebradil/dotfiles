@@ -60,6 +60,8 @@
     required = true
 [commit]
     gpgSign = true
+[tag]
+    gpgSign = true
 [gpg]
     program = /usr/bin/gpg
 [pull]
