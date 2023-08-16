@@ -3,7 +3,7 @@
 tabs 4
 
 for f in "${ZDOTDIR:-}/zshrc/lib/"*.zsh; do
-  source "$f"
+    source "$f"
 done
 
 source "${ZDOTDIR:-}/zshrc/paths.zsh"
@@ -33,18 +33,19 @@ compinit
 
 export LANG=en_US.UTF-8
 export LC_TIME=en_DK.UTF-8
-export EDITOR='nv chad'
+export NVIM_PROFILE_NAME=astro
+export EDITOR=nv
 export MANPAGER='nvim +Man!'
 
 export BAT_THEME=base16-256
 
 export TIMEFMT='%J   %U  user %S system %P cpu %*E total'$'\n'\
-'avg shared (code):         %X KB'$'\n'\
-'avg unshared (data/stack): %D KB'$'\n'\
-'total (sum):               %K KB'$'\n'\
-'max memory:                %M MB'$'\n'\
-'page faults from disk:     %F'$'\n'\
-'other page faults:         %R'
+    'avg shared (code):         %X KB'$'\n'\
+    'avg unshared (data/stack): %D KB'$'\n'\
+    'total (sum):               %K KB'$'\n'\
+    'max memory:                %M MB'$'\n'\
+    'page faults from disk:     %F'$'\n'\
+    'other page faults:         %R'
 
 # +=========================+
 # | Autocompletion          |
