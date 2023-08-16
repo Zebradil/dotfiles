@@ -15,6 +15,7 @@ return {
   { import = "astrocommunity.diagnostics.trouble-nvim" },
 
   { import = "astrocommunity.pack.terraform" },
+  { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.yaml" },
 
   { import = "astrocommunity.completion.copilot-lua-cmp" },
