@@ -5,7 +5,7 @@ set -o errexit
 # This script is used to launch neovim with a different configuration profiles.
 
 NVIM_PROFILES_DIR_NAME="nvim-profiles"
-NVIM_PROFILE_NAME="nvim"
+NVIM_PROFILE_NAME="${NVIM_PROFILE_NAME:-nvim}"
 NVIM_COMMAND="nvim"
 
 usage() (
@@ -44,14 +44,14 @@ print_profiles() (
 )
 
 case "$1" in
--h | --help)
-    usage
-    exit 0
-    ;;
---list-profiles)
-    print_profiles
-    exit 0
-    ;;
+    -h | --help)
+        usage
+        exit 0
+        ;;
+    --list-profiles)
+        print_profiles
+        exit 0
+        ;;
 esac
 
 for profile in "$HOME/.config/$NVIM_PROFILES_DIR_NAME"/*; do
