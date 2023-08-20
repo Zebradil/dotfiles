@@ -24,6 +24,10 @@ return {
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     ["<leader>/"] = { "<cmd>BLines<cr>", desc = "Find lines in the current file" },
   },
+  v = {
+    ["<leader>64e"] = { "c<c-r>=system('base64 --wrap=0',          @\")<cr><esc>", desc = "Base64 encode" },
+    ["<leader>64d"] = { "c<c-r>=system('base64 --wrap=0 --decode', @\")<cr><esc>", desc = "Base64 decode" },
+  },
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
