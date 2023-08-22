@@ -1,5 +1,6 @@
 return {
   "Shatur/neovim-ayu",
+  "Bekaboo/deadcolumn.nvim",
   { "junegunn/fzf", lazy = false },
   { "junegunn/fzf.vim", lazy = false },
   -- You can also add new plugins here as well:
