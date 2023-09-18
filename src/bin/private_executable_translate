@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+# If the first argument is "--speak", then just read selected text in German.
+
+if [[ $1 = "--speak" ]]; then
+    xsel \
+        | tr $'\n' ' ' \
+        | trans -speak -no-translate
+    exit 0
+fi
+
 notify-send "$(\
     xsel \
     | tr $'\n' ' ' \
