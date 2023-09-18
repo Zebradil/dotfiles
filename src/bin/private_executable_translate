@@ -5,7 +5,7 @@
 if [[ $1 = "--speak" ]]; then
     xsel \
         | tr $'\n' ' ' \
-        | trans -speak -no-translate
+        | trans -s de -speak -no-translate
     exit 0
 fi
 
