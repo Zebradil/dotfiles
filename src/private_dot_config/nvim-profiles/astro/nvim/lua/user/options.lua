@@ -1,13 +1,13 @@
 -- set vim options here (vim.<first_key>.<second_key> = value)
 return {
   opt = {
-    -- set to true or false etc.
-    colorcolumn = "+1", -- sets vim.opt.colorcolumn
-    number = true, -- sets vim.opt.number
-    relativenumber = false, -- sets vim.opt.relativenumber
-    signcolumn = "auto", -- sets vim.opt.signcolumn to auto
-    spell = false, -- sets vim.opt.spell
-    wrap = false, -- sets vim.opt.wrap
+    colorcolumn = "+1",
+    number = true,
+    relativenumber = false,
+    scrolloff = 8,
+    signcolumn = "auto",
+    spell = true,
+    wrap = true,
   },
   g = {
     autoformat_enabled = true, -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
