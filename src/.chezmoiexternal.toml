@@ -1,6 +1,6 @@
 [".config/nvim-profiles/chad/nvim"]
 type = "archive"
-url = "https://github.com/NvChad/NvChad/archive/refs/heads/main.zip"
+url = "https://github.com/NvChad/NvChad/archive/refs/heads/v2.0.zip"
 stripComponents = 1
 refreshPeriod = "168h"
 
