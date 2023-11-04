@@ -91,6 +91,14 @@ my:yay \
     ttf-iosevkaterm-nerd \
     ttf-roboto \
     xorg
+
+{{ if .battery -}}
+header "Installing optional desktop packages for battery powered devices"
+
+my:yay \
+    light \
+    gnome-power-manager
+{{ end -}}
 {{ end -}}
 
 {{ if eq .package_mode "desktop-full" -}}
@@ -127,8 +135,6 @@ my:yay \
 header "Installing optional packages for battery powered devices"
 
 my:yay \
-    light \
-    gnome-power-manager \
     powertop \
     tlp \
     tlp-rdw
