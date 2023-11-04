@@ -1,5 +1,9 @@
 {{/* vim: set ft=gotexttmpl : */}}
-encryption = "gpg"
+encryption = "age"
+[age]
+    identity  = "{{ .chezmoi.configFile | replaceAllRegex "[^/]+$" "" }}/key.txt"
+    recipient = "age1rs8uee43nakvvu9hyu65zaspu8lrexmncwrdsl0qnhw47rc4z4ns32734t"
+
 [gpg]
     recipient = "9F2540F5C7A2DD39030476CE3446FAE369C9A8B4"
 

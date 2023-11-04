@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -euo pipefail
+
+CONFIG_DIR="$(dirname "{{ .chezmoi.configFile }}")"
+KEY_FILE="$CONFIG_DIR/key.txt"
+ENCRYPTED_KEY_FILE="{{ .chezmoi.workingTree }}/key.txt.age"
+
+if [[ ! -f "$KEY_FILE" ]]; then
+    mkdir -p "$CONFIG_DIR"
+    chezmoi age decrypt \
+        --output "$KEY_FILE" \
+        --passphrase \
+        "$ENCRYPTED_KEY_FILE"
+    chmod 600 "$KEY_FILE"
+fi
+
+# vim:ft=sh:
