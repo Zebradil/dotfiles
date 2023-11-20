@@ -20,6 +20,7 @@ return {
 
   { import = "astrocommunity.note-taking.neorg" },
 
+  { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.terraform" },
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.yaml" },

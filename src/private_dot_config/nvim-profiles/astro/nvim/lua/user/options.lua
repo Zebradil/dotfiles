@@ -7,6 +7,7 @@ return {
     scrolloff = 8,
     signcolumn = "auto",
     spell = true,
+    termguicolors = true,
     wrap = true,
   },
   g = {

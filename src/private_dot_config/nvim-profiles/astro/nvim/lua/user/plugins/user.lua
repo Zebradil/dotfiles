@@ -1,5 +1,6 @@
 return {
-  "Shatur/neovim-ayu",
+  { "Shatur/neovim-ayu", lazy = false },
+  { "jacoborus/tender.vim", lazy = false },
   { "junegunn/fzf", lazy = false },
   { "junegunn/fzf.vim", lazy = false },
   { "tpope/vim-abolish", lazy = false },
