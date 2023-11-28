@@ -4,6 +4,7 @@ return {
   { "junegunn/fzf", lazy = false },
   { "junegunn/fzf.vim", lazy = false },
   { "tpope/vim-abolish", lazy = false },
+  { "tridactyl/vim-tridactyl", ft = "tridactyl" },
   -- You can also add new plugins here as well:
   -- Add plugins, the lazy syntax
   -- "andweeb/presence.nvim",
