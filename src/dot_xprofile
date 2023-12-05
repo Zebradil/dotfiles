@@ -4,3 +4,5 @@ do
     xinput set-prop $i "libinput Click Method Enabled" 1 0
     xinput set-prop $i "libinput Natural Scrolling Enabled" 1
 done
+
+export WINIT_X11_SCALE_FACTOR=1
