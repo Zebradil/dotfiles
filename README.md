@@ -26,7 +26,15 @@ but some parts of the configuration require changes outside of the home director
 This can be solved with [scripts](https://www.chezmoi.io/user-guide/use-scripts-to-perform-actions/),
 but until it is implemented, follow the instructions in this section.
 
-### LightDM wallpaper
+### LightDM
+
+#### Greeter
+
+```shell
+sudo sed -i '/^#greeter-session/a greeter-session=lightdm-slick-greeter' /etc/lightdm/lightdm.conf
+```
+
+#### Wallpaper
 
 This configuration bundle uses lightdm and lightdm-slick-greeter. Use `lightdm-settings` for configuration and setting
 wallpaper. There should be a way to set wallpaper on per-user basis via AccountsService and dbus (in this case "Draw
