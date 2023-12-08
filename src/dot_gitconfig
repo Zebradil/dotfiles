@@ -3,7 +3,7 @@
 [user]
     name = German Lashevich
     useConfigOnly = true
-    signingKey = 3446FAE369C9A8B4
+    signingKey = C845220C41E0B3FE
 [credential]
     helper = /usr/lib/git-core/git-credential-libsecret
 [core]
