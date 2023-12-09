@@ -6,6 +6,7 @@ if lib::check_commands gnome-keyring-daemon; then
   log::debug "Configuring gnome-keyring environment"
 
   if pgrep -f gnome-keyring-daemon >/dev/null; then
+    log::info "SSH_AUTH_SOCK is set to $SSH_AUTH_SOCK"
     eval "$(gnome-keyring-daemon --start)"
     export GNOME_KEYRING_CONTROL
     export SSH_AUTH_SOCK
