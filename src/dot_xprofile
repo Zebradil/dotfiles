@@ -1,8 +1,13 @@
-for i in $(xinput list | sed -nr '/touchpad/I s/.*id=([0-9]+).*/\1/p')
-do
+# vim: ft=sh
+
+for i in $(xinput list | sed -nr '/touchpad/I s/.*id=([0-9]+).*/\1/p'); do
     xinput set-prop $i "libinput Tapping Enabled" 1
     xinput set-prop $i "libinput Click Method Enabled" 1 0
     xinput set-prop $i "libinput Natural Scrolling Enabled" 1
 done
 
+# For more consistent font size in Alacritty across different DPIs
 export WINIT_X11_SCALE_FACTOR=1
+
+# Works together with `systemctl start --user gcr-ssh-agent.socket`
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
