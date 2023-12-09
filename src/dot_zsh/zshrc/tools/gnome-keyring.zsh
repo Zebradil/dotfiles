@@ -7,9 +7,13 @@ if lib::check_commands gnome-keyring-daemon; then
 
   if pgrep -f gnome-keyring-daemon >/dev/null; then
     log::info "SSH_AUTH_SOCK is set to $SSH_AUTH_SOCK"
+    ORIG_SSH_AUTH_SOCK="$SSH_AUTH_SOCK"
     eval "$(gnome-keyring-daemon --start)"
     export GNOME_KEYRING_CONTROL
-    export SSH_AUTH_SOCK
+    # Do not override SSH_AUTH_SOCK if it is already set
+    if [[ -z $ORIG_SSH_AUTH_SOCK ]]; then
+      export SSH_AUTH_SOCK
+    fi
   fi
 fi
 
@@ -32,11 +36,11 @@ if lib::check_commands systemd-ask-password; then
 
   my:gnome-keyring:unlock() {
     if my:gnome-keyring:is-locked; then
-        if systemd-ask-password | unlock.py; then
-          log::info "Unlocked gnome-keyring"
-        else
-          log::error "Failed to unlock gnome-keyring"
-        fi
+      if systemd-ask-password | unlock.py; then
+        log::info "Unlocked gnome-keyring"
+      else
+        log::error "Failed to unlock gnome-keyring"
+      fi
     fi
   }
 fi
