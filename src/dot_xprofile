@@ -8,6 +8,3 @@ done
 
 # For more consistent font size in Alacritty across different DPIs
 export WINIT_X11_SCALE_FACTOR=1
-
-# Works together with `systemctl start --user gcr-ssh-agent.socket`
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
