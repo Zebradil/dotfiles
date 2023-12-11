@@ -1,4 +1,5 @@
 return {
+  { "NoahTheDuke/vim-just", event = { "BufReadPre", "BufNewFile" }, ft = { "\\cjustfile", "*.just", ".justfile" } },
   { "Shatur/neovim-ayu", lazy = false },
   { "jacoborus/tender.vim", lazy = false },
   { "junegunn/fzf", lazy = false },

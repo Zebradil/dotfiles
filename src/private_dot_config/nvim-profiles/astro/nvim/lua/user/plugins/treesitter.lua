@@ -22,7 +22,6 @@ return {
       "jq",
       "json",
       "json5",
-      "just",
       "lua",
       "markdown",
       "markdown_inline",
