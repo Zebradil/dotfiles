@@ -21,6 +21,7 @@ return {
   { import = "astrocommunity.note-taking.neorg" },
 
   { import = "astrocommunity.pack.bash" },
+  { import = "astrocommunity.pack.just" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.terraform" },
   { import = "astrocommunity.pack.typescript" },
