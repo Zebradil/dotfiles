@@ -3,7 +3,7 @@
 # +--------------------------+
 
 if lib::check_commands gh; then
-    my:git:cd-to-repo() {
+    my:gh:cd-to-repo() {
         local repo="${1:?repo name is required}"
         # Check if $repo contains a slash, if not, add the default org
         if [[ ! "$repo" =~ / ]]; then
@@ -15,4 +15,6 @@ if lib::check_commands gh; then
         fi
         cd "$dir"
     }
+
+    alias ghcd=my:gh:cd-to-repo
 fi
