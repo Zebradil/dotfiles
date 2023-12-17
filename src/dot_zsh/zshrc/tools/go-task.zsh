@@ -1,6 +1,6 @@
-# +=========================+
-# | Go-task configuration   |
-# +-------------------------+
+# +==========================+
+# | Go-task configuration    |
+# +--------------------------+
 
 if lib::check_commands go-task; then
     log::debug "Configuring go-task"

@@ -1,6 +1,6 @@
-# +=========================+
-# | Docker configuration    |
-# +-------------------------+
+# +==========================+
+# | Docker configuration     |
+# +--------------------------+
 
 # Deliberately checking only docker command
 if lib::check_commands docker; then

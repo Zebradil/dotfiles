@@ -1,9 +1,9 @@
-# +=========================+
-# | Antidote plugin manager |
-# +-------------------------+
+# +==========================+
+# | Antidote plugin manager  |
+# +--------------------------+
 
 antidote_plugins="$(
-<<EOF
+    <<EOF
 hcgraf/zsh-sudo
 jeffreytse/zsh-vi-mode
 marzocchi/zsh-notify
