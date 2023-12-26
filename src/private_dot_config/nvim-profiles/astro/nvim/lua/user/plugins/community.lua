@@ -14,6 +14,19 @@ return {
 
   { import = "astrocommunity.diagnostics.trouble-nvim" },
 
+  { import = "astrocommunity.editing-support.cutlass-nvim" },
+  {
+    "cutlass.nvim",
+    opts = {
+      cut_key = "x",
+      registers = {
+        select = "s",
+        delete = "d",
+        change = "c",
+      },
+    },
+  },
+
   { import = "astrocommunity.git.diffview-nvim" },
   { import = "astrocommunity.git.neogit" },
   { import = "astrocommunity.git.octo-nvim" },
@@ -23,14 +36,16 @@ return {
   { import = "astrocommunity.pack.bash" },
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.just" },
+  { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.terraform" },
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.yaml" },
 
+  { import = "astrocommunity.search.nvim-hlslens" },
+
   { import = "astrocommunity.completion.copilot-lua-cmp" },
   {
-    -- further customize the options set by the community
     "copilot.lua",
     opts = {
       filetypes = {
