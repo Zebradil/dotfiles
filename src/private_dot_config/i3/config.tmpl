@@ -291,12 +291,14 @@ mode $mode_resize {
 }
 bindsym $mod+r mode $mode_resize
 
-set $mode_displays "displays: 1, 2, e[xtended], m[irror]"
+set $mode_displays "displays: 1, 2, e[xtended], m[irror], r[eset]"
 mode $mode_displays {
     bindsym 1 exec ~/.screenlayout/first.sh
     bindsym 2 exec ~/.screenlayout/second.sh
     bindsym e exec ~/.screenlayout/extended.sh
     bindsym m exec ~/.screenlayout/mirror.sh
+
+    bindsym r exec ~/bin/reset-displays
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -396,6 +398,7 @@ assign [class="morgen"] workspace $ws5
 assign [class="mailspring"] workspace $ws5
 
 assign [title="Google Meet"] workspace $ws6
+assign [class="zoom"] workspace $ws6
 
 assign [class="NoiseTorch"] workspace $ws7
 assign [class="pavucontrol"] workspace $ws7
@@ -403,13 +406,13 @@ assign [class="pavucontrol"] workspace $ws7
 assign [class="keepassxc"] workspace $ws10
 
 # Set Zoom notification window to floating with no focus
-for_window [title="^zoom\s?$"] floating enable
-no_focus [title="^zoom\s?$"]
+#for_window [title="^zoom\s?$"] floating enable
+#no_focus [title="^zoom\s?$"]
 
 # For meetings that you have joined via a link
-for_window [title="^join\?action=join.*$"] floating enable
-no_focus [title="^join\?action=join.*$"]
+#for_window [title="^join\?action=join.*$"] floating enable
+#no_focus [title="^join\?action=join.*$"]
 
 # Alternatively if the popups are annoying you...
-# for_window [title="^zoom\s?$"] kill
-# for_window [title="^join\?action=join.*$"] kill
+#for_window [title="^zoom\s?$"] kill
+#for_window [title="^join\?action=join.*$"] kill
