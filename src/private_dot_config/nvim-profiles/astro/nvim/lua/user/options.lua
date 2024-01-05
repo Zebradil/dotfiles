@@ -6,7 +6,7 @@ return {
     relativenumber = false,
     scrolloff = 8,
     signcolumn = "auto",
-    spell = true,
+    spell = false,
     termguicolors = true,
     wrap = true,
   },
