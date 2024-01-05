@@ -12,8 +12,11 @@ if lib::check_commands gh; then
         local dir="$HOME/code/github.com/$repo"
         if [[ ! -d "$dir" ]]; then
             gh repo clone "$repo" "$dir"
+            cd "$dir"
+        else
+            cd "$dir"
+            git fetch --all
         fi
-        cd "$dir"
     }
 
     alias ghcd=my:gh:cd-to-repo
