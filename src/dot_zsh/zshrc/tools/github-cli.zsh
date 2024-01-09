@@ -15,7 +15,7 @@ if lib::check_commands gh; then
             cd "$dir"
         else
             cd "$dir"
-            git fetch --all
+            git fetch --all --prune
         fi
     }
 
