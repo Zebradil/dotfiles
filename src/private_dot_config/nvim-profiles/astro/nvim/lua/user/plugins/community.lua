@@ -10,22 +10,31 @@ return {
   { import = "astrocommunity.colorscheme.dracula-nvim" },
   { import = "astrocommunity.colorscheme.kanagawa-nvim" },
   { import = "astrocommunity.colorscheme.nightfox-nvim" },
+  { import = "astrocommunity.colorscheme.sonokai" },
   { import = "astrocommunity.colorscheme.tokyonight-nvim" },
+
+  { "catppuccin", lazy = false },
+  { "Mofiqul/dracula.nvim", lazy = false },
+  { "rebelot/kanagawa.nvim", lazy = false },
+  { "EdenEast/nightfox.nvim", lazy = false },
+  { "sainnhe/sonokai", lazy = false },
+  { "folke/tokyonight.nvim", lazy = false },
 
   { import = "astrocommunity.diagnostics.trouble-nvim" },
 
-  { import = "astrocommunity.editing-support.cutlass-nvim" },
-  {
-    "cutlass.nvim",
-    opts = {
-      cut_key = "x",
-      registers = {
-        select = "s",
-        delete = "d",
-        change = "c",
-      },
-    },
-  },
+  -- This stopped working
+  -- { import = "astrocommunity.editing-support.cutlass-nvim" },
+  -- {
+  --   "cutlass.nvim",
+  --   opts = {
+  --     cut_key = "x",
+  --     registers = {
+  --       select = "s",
+  --       delete = "d",
+  --       change = "c",
+  --     },
+  --   },
+  -- },
 
   { import = "astrocommunity.git.diffview-nvim" },
   { import = "astrocommunity.git.neogit" },
