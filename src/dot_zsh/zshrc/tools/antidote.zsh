@@ -16,6 +16,7 @@ zdharma-continuum/history-search-multi-word
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
 zsh-users/zsh-syntax-highlighting
+djui/alias-tips
 EOF
 )"
 
