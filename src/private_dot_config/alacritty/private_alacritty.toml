@@ -1,0 +1,70 @@
+import = ["/home/zebradil/.config/alacritty/colors.toml"]
+
+[[colors.indexed_colors]]
+color = "0xff8f40"
+index = 16
+
+[[colors.indexed_colors]]
+color = "0xe6b673"
+index = 17
+
+[[colors.indexed_colors]]
+color = "0x131721"
+index = 18
+
+[[colors.indexed_colors]]
+color = "0x272d38"
+index = 19
+
+[[colors.indexed_colors]]
+color = "0xbfbdb6"
+index = 20
+
+[[colors.indexed_colors]]
+color = "0xe6e1cf"
+index = 21
+
+[colors.bright]
+black = "0x3e4b59"
+blue = "0x59c2ff"
+cyan = "0x95e6cb"
+green = "0xb8cc52"
+magenta = "0xd2a6ff"
+red = "0xf07178"
+white = "0xf3f4f5"
+yellow = "0xffb454"
+
+[colors.cursor]
+cursor = "0xe6e1cf"
+text = "0x0f1419"
+
+[colors.normal]
+black = "0x0f1419"
+blue = "0x59c2ff"
+cyan = "0x95e6cb"
+green = "0xb8cc52"
+magenta = "0xd2a6ff"
+red = "0xf07178"
+white = "0xe6e1cf"
+yellow = "0xffb454"
+
+[colors.primary]
+background = "0x0f1419"
+foreground = "0xe6e1cf"
+
+[colors.selection]
+background = "#f2f2f2"
+text = "#403f53"
+
+[font]
+size = 14.0
+
+[font.normal]
+family = "IosevkaTerm NFM"
+
+[window]
+dynamic_padding = true
+
+[window.padding]
+x = 10
+y = 10
