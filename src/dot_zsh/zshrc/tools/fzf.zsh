@@ -42,7 +42,7 @@ if lib::check_commands fzf fd bat exa; then
             export | unset) fzf "$@" --preview "eval 'echo \$'{}" ;;
             ssh) fzf "$@" --preview 'dig {}' ;;
             man) man -k . | fzf --prompt='Man> ' --preview 'man $(echo {} | awk "{print \$1}") | '"${FZF_TEXT_FILE_PREVIEW_CMD} -lman" | awk '{print $1}' ;;
-            vi | vim | nvim) fzf "$@" --preview "[ -f {} ] && ${FZF_TEXT_FILE_PREVIEW_CMD} {} || ${FZF_DIRECTORY_PREVIEW_CMD}" ;;
+            vi | vim | nvim | nv) fzf "$@" --preview "[ -f {} ] && ${FZF_TEXT_FILE_PREVIEW_CMD} {} || ${FZF_DIRECTORY_PREVIEW_CMD}" ;;
             pacman) pacman -Qq | fzf --preview 'pacman -Qi {}' ;;
             *) fzf "$@" ;;
         esac
