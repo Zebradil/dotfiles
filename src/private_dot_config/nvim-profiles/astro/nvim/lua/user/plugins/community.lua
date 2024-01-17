@@ -37,6 +37,7 @@ return {
   -- },
 
   { import = "astrocommunity.git.diffview-nvim" },
+  { import = "astrocommunity.git.gitlinker-nvim" },
   { import = "astrocommunity.git.neogit" },
   { import = "astrocommunity.git.octo-nvim" },
 
