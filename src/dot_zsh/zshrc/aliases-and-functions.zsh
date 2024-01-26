@@ -14,6 +14,7 @@ insist() {
     done
 }
 
+alias tmpcd='cd "$(mktemp -d)"'
 mcd() {
     if [ -d "$1" ]; then
         log::info "$1 exists"
@@ -44,12 +45,12 @@ fi
 if lib::check_commands openstack acme.sh yq; then
     my:openstack:acme.sh() {
         env $(\
-          yq eval --output-format props \
-          '.clouds[env(OS_CLOUD)] | explode(.) | (with_entries(select(.key != "auth")), .auth)' \
-          ~/.config/openstack/clouds.yaml \
-          | sed -r 's/^(\w+) = (.*)/\UOS_\1\E=\2/' \
-          | xargs -d '\n') \
-        acme.sh --issue --dns dns_openstack --domain "${@}"
+                yq eval --output-format props \
+                '.clouds[env(OS_CLOUD)] | explode(.) | (with_entries(select(.key != "auth")), .auth)' \
+                ~/.config/openstack/clouds.yaml \
+                | sed -r 's/^(\w+) = (.*)/\UOS_\1\E=\2/' \
+            | xargs -d '\n') \
+            acme.sh --issue --dns dns_openstack --domain "${@}"
     }
 fi
 
@@ -94,7 +95,7 @@ if lib::check_commands fzf rg bat; then
     function frg() (
         rg --line-number --color=always "$@" \
             | fzf -d ':' -n 2.. --ansi --no-sort --preview-window '+{2}/2' \
-                --preview 'bat --style=numbers --color=always --highlight-line {2} {1}'
+            --preview 'bat --style=numbers --color=always --highlight-line {2} {1}'
     )
 fi
 
@@ -102,11 +103,11 @@ if lib::check_commands alacritty-colorscheme fzf exa bat; then
     function chct() (
         local alclr=alacritty-colorscheme
         $alclr list |
-            fzf "$@" --preview "
+        fzf "$@" --preview "
               $alclr apply {}
               bat --color=always --plain --line-range 52:68 ~/.zshrc
               echo
-              exa -l /tmp"
+        exa -l /tmp"
     )
 fi
 
@@ -130,18 +131,18 @@ fi
 if lib::check_commands fzf git; then
     # Checkout git branch/tag, with a preview showing the commits between the tag/branch and HEAD
     my:git:fzf-checkout() {
-      local tags branches target
-      branches=$(
-        git --no-pager branch --all \
-          --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" \
-        | sed '/^$/d') || return
-      tags=$(
+        local tags branches target
+        branches=$(
+            git --no-pager branch --all \
+                --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" \
+            | sed '/^$/d') || return
+        tags=$(
         git --no-pager tag | awk '{print "\x1b[35;1mtag\x1b[m\t" $1}') || return
-      target=$(
-        (echo "$branches"; echo "$tags") |
-        fzf --no-hscroll --no-multi -n 2 \
+        target=$(
+            (echo "$branches"; echo "$tags") |
+            fzf --no-hscroll --no-multi -n 2 \
             --ansi --preview="git --no-pager log -150 --pretty=format:%s '..{2}'") || return
-      git checkout $(awk '{print $2}' <<<"$target" )
+        git checkout $(awk '{print $2}' <<<"$target" )
     }
 fi
 
