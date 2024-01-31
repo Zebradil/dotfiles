@@ -4,6 +4,13 @@
 
 log::debug "Loading aliases and functions"
 
+z:prefix-lines() {
+    local prefix="${1:?specify prefix}"
+    while read -r line; do
+        echo "$prefix$line"
+    done
+}
+
 insist() {
     local delay=1
     local cmd
