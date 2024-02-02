@@ -65,7 +65,7 @@ exec_always {{ template "ergodox" }}
 # exec --no-startup-id udiskie --no-automount --no-notify --tray
 exec --no-startup-id dex -ae i3
 exec --no-startup-id workrave
-exec_always --no-startup-id xkb-switch --i3
+exec_always --no-startup-id xkb-switch --i3 > /tmp/xkb-switch.log 2>&1
 
 # start a terminal
 bindsym $mod+Return exec alacritty
