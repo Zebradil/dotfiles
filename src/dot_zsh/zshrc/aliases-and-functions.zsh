@@ -4,8 +4,6 @@
 
 log::debug "Loading aliases and functions"
 
-alias code='code --password-store=gnome'
-
 z:prefix-lines() {
     local prefix="${1:?specify prefix}"
     while read -r line; do
