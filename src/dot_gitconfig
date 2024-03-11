@@ -15,8 +15,12 @@
     diffFilter = delta --color-only
 [delta]
     navigate = true
+    hyperlinks = true
     light = false
     side-by-side = true
+[pager]
+	grep = delta
+	blame = delta
 [diff]
     colorMoved = default
 [push]
