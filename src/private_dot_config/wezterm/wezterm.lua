@@ -61,6 +61,14 @@ config.keys = {
     { key = "x", mods = "LEADER", action = act.CloseCurrentTab({ confirm = true }) },
     { key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
     { key = '"', mods = "LEADER|SHIFT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+    { key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
+    { key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
+    { key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
+    { key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
+    { key = "h", mods = "LEADER|CTRL", action = act.AdjustPaneSize({ "Left", 1 }) },
+    { key = "l", mods = "LEADER|CTRL", action = act.AdjustPaneSize({ "Right", 1 }) },
+    { key = "k", mods = "LEADER|CTRL", action = act.AdjustPaneSize({ "Down", 1 }) },
+    { key = "j", mods = "LEADER|CTRL", action = act.AdjustPaneSize({ "Up", 1 }) },
 
     -- defaults
     {
@@ -169,6 +177,30 @@ config.key_tables = {
         { key = "PageDown", mods = "NONE", action = act.CopyMode("NextMatchPage") },
         { key = "UpArrow", mods = "NONE", action = act.CopyMode("PriorMatch") },
         { key = "DownArrow", mods = "NONE", action = act.CopyMode("NextMatch") },
+    },
+}
+
+config.mouse_bindings = {
+    -- Change the default click behavior so that it only selects
+    -- text and doesn't open hyperlinks
+    {
+        event = { Up = { streak = 1, button = "Left" } },
+        mods = "NONE",
+        action = act.CompleteSelection("PrimarySelection"),
+    },
+
+    -- and make CTRL-Click open hyperlinks
+    {
+        event = { Up = { streak = 1, button = "Left" } },
+        mods = "CTRL",
+        action = act.OpenLinkAtMouseCursor,
+    },
+
+    -- Disable the 'Down' event of CTRL-Click to avoid weird program behaviors
+    {
+        event = { Down = { streak = 1, button = "Left" } },
+        mods = "CTRL",
+        action = act.Nop,
     },
 }
 
