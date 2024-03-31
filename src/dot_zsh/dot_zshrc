@@ -37,7 +37,7 @@ export NVIM_PROFILE_NAME=astro
 export EDITOR=nv
 export MANPAGER='nv +Man!'
 
-export BAT_THEME=base16-256
+export BAT_THEME=OneHalfDark
 
 export TIMEFMT='%J   %U  user %S system %P cpu %*E total'$'\n'\
 'avg shared (code):         %X KB'$'\n'\

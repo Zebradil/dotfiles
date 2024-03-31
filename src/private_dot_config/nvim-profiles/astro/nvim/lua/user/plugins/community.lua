@@ -41,7 +41,7 @@ return {
   { import = "astrocommunity.git.neogit" },
   { import = "astrocommunity.git.octo-nvim" },
 
-  { import = "astrocommunity.note-taking.neorg" },
+  -- { import = "astrocommunity.note-taking.neorg" },
 
   { import = "astrocommunity.pack.bash" },
   { import = "astrocommunity.pack.go" },
