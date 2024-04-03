@@ -9,7 +9,7 @@ if lib::check_commands fzf fd bat exa; then
     source /usr/share/fzf/key-bindings.zsh
 
     export FZF_DEFAULT_OPTS='--multi --no-height --extended'
-    export FZF_DEFAULT_COMMAND='fd --no-ignore --hidden --exclude ".git" --exclude "~/go"'
+    export FZF_DEFAULT_COMMAND='fd --no-ignore --strip-cwd-prefix --hidden --exclude .git --exclude node_modules --exclude "$HOME/go"'
     export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
     # TODO transform these commands to functions
     FZF_PREVIEW_MAX_LINES=200
@@ -22,12 +22,16 @@ if lib::check_commands fzf fd bat exa; then
     # - The first argument to the function ($1) is the base path to start traversal
     # - See the source code (completion.{bash,zsh}) for the details.
     _fzf_compgen_path() {
-        eval "${FZF_DEFAULT_COMMAND}" --follow . "$1"
+        local dir
+        [[ $1 != . ]] && dir="$1"
+        eval "${FZF_CTRL_T_COMMAND}" --follow . "$dir"
     }
 
     # Use fd to generate the list for directory completion
     _fzf_compgen_dir() {
-        eval "${FZF_DEFAULT_COMMAND}" --follow --type d . "$1"
+        local dir
+        [[ $1 != . ]] && dir="$1"
+        eval "${FZF_CTRL_T_COMMAND}" --follow --type d . "$dir"
     }
 
     # (EXPERIMENTAL) Advanced customization of fzf options via _fzf_comprun function
