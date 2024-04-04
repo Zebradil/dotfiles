@@ -101,8 +101,8 @@ fi
 if lib::check_commands fzf rg bat; then
     function frg() (
         rg --line-number --color=always "$@" \
-            | fzf -d ':' -n 2.. --ansi --no-sort --preview-window '+{2}/2' \
-            --preview 'bat --style=numbers --color=always --highlight-line {2} {1}'
+            | fzf -d ':' --ansi --no-sort --preview-window 'up,70%,+{2}/2' \
+            --preview 'bat --terminal-width=$FZF_PREVIEW_COLUMNS --style=numbers --color=always --highlight-line {2} {1}'
     )
 fi
 
