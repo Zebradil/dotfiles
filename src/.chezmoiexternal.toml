@@ -1,12 +1,12 @@
 [".config/nvim-profiles/chad/nvim"]
 type = "archive"
-url = "https://github.com/NvChad/NvChad/archive/refs/heads/v2.0.zip"
+url = "https://github.com/NvChad/NvChad/archive/refs/tags/v2.5.zip"
 stripComponents = 1
 refreshPeriod = "168h"
 
 [".config/nvim-profiles/astro/nvim"]
 type = "archive"
-url = "https://github.com/AstroNvim/AstroNvim/archive/refs/heads/main.zip"
+url = "https://github.com/AstroNvim/AstroNvim/archive/refs/tags/v3.45.3.zip"
 stripComponents = 1
 refreshPeriod = "168h"
 
