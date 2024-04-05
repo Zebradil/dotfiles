@@ -29,12 +29,16 @@ config.unix_domains = {
 -- connecting to the unix domain on startup. If you prefer to connect manually, leave out this line.
 config.default_gui_startup_args = { "connect", "unix" }
 
+-- How many lines of scrollback you want to retain per tab
+config.scrollback_lines = 10000
+
 config.disable_default_key_bindings = true
 -- timeout_milliseconds defaults to 1000 and can be omitted
-config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
+config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 }
 config.keys = {
     { key = "%",   mods = "LEADER|SHIFT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-    { key = "+",   mods = "CTRL",         action = act.IncreaseFontSize },
+    { key = "+",   mods = "CTRL|SHIFT",   action = act.IncreaseFontSize },
+    { key = "=",   mods = "CTRL",         action = act.IncreaseFontSize },
     { key = "-",   mods = "CTRL",         action = act.DecreaseFontSize },
     { key = "0",   mods = "CTRL",         action = act.ResetFontSize },
     { key = "1",   mods = "LEADER",       action = act.ActivateTab(0) },
@@ -51,6 +55,7 @@ config.keys = {
     { key = "a",   mods = "LEADER|CTRL",  action = act.SendKey({ key = "a", mods = "CTRL" }) },
     { key = "c",   mods = "LEADER",       action = act.SpawnTab("CurrentPaneDomain") },
     { key = "c",   mods = "SHIFT|CTRL",   action = act.CopyTo("Clipboard") },
+    { key = "c",   mods = "SUPER",        action = act.CopyTo("Clipboard") },
     { key = "f",   mods = "SHIFT|CTRL",   action = act.Search("CurrentSelectionOrEmptyString") },
     { key = "k",   mods = "SHIFT|CTRL",   action = act.ClearScrollback("ScrollbackOnly") },
     { key = "l",   mods = "SHIFT|CTRL",   action = act.ShowDebugOverlay },
@@ -58,6 +63,7 @@ config.keys = {
     { key = "r",   mods = "SHIFT|CTRL",   action = act.ReloadConfiguration },
     { key = "t",   mods = "CTRL|SHIFT",   action = act.SpawnTab("CurrentPaneDomain") },
     { key = "v",   mods = "SHIFT|CTRL",   action = act.PasteFrom("Clipboard") },
+    { key = "v",   mods = "SUPER",        action = act.PasteFrom("Clipboard") },
     { key = "x",   mods = "LEADER",       action = act.CloseCurrentTab({ confirm = true }) },
     { key = "z",   mods = "LEADER",       action = act.TogglePaneZoomState },
     { key = '"',   mods = "LEADER|SHIFT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
