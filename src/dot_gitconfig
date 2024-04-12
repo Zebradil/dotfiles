@@ -4,6 +4,8 @@
     name = German Lashevich
     useConfigOnly = true
     signingKey = C845220C41E0B3FE
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
 [credential]
     helper = /usr/lib/git-core/git-credential-libsecret
 [core]
