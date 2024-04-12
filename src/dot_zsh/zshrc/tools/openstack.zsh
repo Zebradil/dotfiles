@@ -3,5 +3,5 @@
 # +--------------------------+
 
 if lib::check_commands openstack; then
-    alias os="openstack"
+  alias os="openstack"
 fi

@@ -3,5 +3,5 @@
 # +--------------------------+
 
 if lib::check_commands terraform; then
-    alias tf="terraform"
+  alias tf="terraform"
 fi
