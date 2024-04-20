@@ -44,6 +44,9 @@ return {
     ---@diagnostic disable: missing-fields
     config = {
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      dockerls = {
+        settings = { docker = { languageserver = { formatter = { ignoreMultilineInstructions = true } } } },
+      },
     },
     -- customize how language servers are attached
     handlers = {
