@@ -10,6 +10,7 @@ return {
       "vim",
       -- add more arguments for adding more treesitter parsers
       "hcl",
+      "json5",
     })
   end,
 }
