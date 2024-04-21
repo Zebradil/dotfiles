@@ -52,6 +52,7 @@ config.keys = {
     { key = "9",   mods = "LEADER",       action = act.ActivateTab(8) },
     { key = "Tab", mods = "CTRL",         action = act.ActivateTabRelative(1) },
     { key = "Tab", mods = "CTRL|SHIFT",   action = act.ActivateTabRelative(-1) },
+    { key = "Tab", mods = "LEADER",       action = act.ActivateLastTab },
     { key = "a",   mods = "LEADER|CTRL",  action = act.SendKey({ key = "a", mods = "CTRL" }) },
     { key = "c",   mods = "LEADER",       action = act.SpawnTab("CurrentPaneDomain") },
     { key = "c",   mods = "SHIFT|CTRL",   action = act.CopyTo("Clipboard") },
