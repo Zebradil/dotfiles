@@ -71,7 +71,7 @@ return {
         ["<Leader>b"] = { desc = "Buffers" },
         -- quick save
         -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
-        ["<Leader>/"] = { "<cmd>BLines<cr>", desc = "Find lines in the current file" },
+        ["<Leader>/"] = { "<cmd>BLines<cr>", expr = false, desc = "Find lines in the current file" },
       },
       t = {
         -- setting a mapping to false will disable it
