@@ -6,6 +6,8 @@
 return {
   "AstroNvim/astrocommunity",
 
+  { import = "astrocommunity.git.blame-nvim" },
+
   { import = "astrocommunity.pack.bash" },
   { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.pack.go" },
