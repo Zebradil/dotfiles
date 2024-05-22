@@ -7,7 +7,9 @@ config.color_scheme = "ayu"
 config.font = wezterm.font("IosevkaTerm NFM")
 config.font_size = 14.0
 config.cell_width = 0.9
-config.line_height = 1.05
+-- On some systems, this causes some characters to elevate over the base line.
+-- See https://github.com/wez/wezterm/issues/3893
+-- config.line_height = 1.05
 
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
