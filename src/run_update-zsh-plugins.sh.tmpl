@@ -10,7 +10,7 @@ antidote_source="/usr/share/zsh-antidote/antidote.zsh"
 
 if command -v antidote &> /dev/null
 then
-    state_file="{{.chezmoi.cacheDir}}/emacs-updated"
+    state_file="{{.chezmoi.cacheDir}}/antidote-updated"
     now_file="$(mktemp)"
     touch -d "$UPDATE_FREQUENCY ago" "$now_file"
 
