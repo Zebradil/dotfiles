@@ -8,7 +8,6 @@ hcgraf/zsh-sudo
 jeffreytse/zsh-vi-mode
 marzocchi/zsh-notify
 robbyrussell/oh-my-zsh path:lib/git.zsh
-robbyrussell/oh-my-zsh path:plugins/docker-machine
 robbyrussell/oh-my-zsh path:plugins/git
 unixorn/git-extra-commands
 zchee/zsh-completions
